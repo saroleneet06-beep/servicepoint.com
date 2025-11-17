@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ServicePoint.com</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('www.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            color: #fff;
+        }
+
+        /* Container for sliding welcome text */
+        .welcome-container {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            width: 80%;
+            height: 50px;
+            z-index: 1000;
+            background-color: rgba(0,0,0,0.7);
+            border-radius: 5px;
+        }
+
+        /* Sliding Text Wrapper */
+        .welcome-wrapper {
+            display: inline-block;
+            white-space: nowrap;
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+            padding: 10px 0;
+            animation: marquee 15s linear infinite;
+        }
+
+        /* Continuous sliding animation */
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Left Box */
+        .left-box {
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            width: 220px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #fff;
+        }
+
+        .left-box h3 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+            font-weight: bold;
+            color: #ff0;
+        }
+
+        .left-box ul {
+            margin: 0;
+            padding-left: 15px;
+        }
+
+        .left-box ul li {
+            margin-bottom: 5px;
+        }
+
+        .left-box ul li a {
+            color: #0ff;
+            text-decoration: none;
+        }
+
+        .left-box ul li a:hover {
+            text-decoration: underline;
+            color: #ff0;
+        }
+
+        /* Right Contact Box */
+        .top-contact {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background-color: rgba(40, 167, 69, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .contact-number {
+            display: none;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .top-contact div:first-child {
+            font-size: 16px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #fff, #ff0, #0ff, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: blinkGradient 2s linear infinite, moveGradient 3s linear infinite;
+        }
+
+        @keyframes blinkGradient {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.3; }
+        }
+
+        @keyframes moveGradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        /* Right Side Sliding Images */
+        .right-slider {
+            position: fixed;
+            top: 150px;    
+            right: 10px;   
+            width: 120px;  
+            height: 250px; 
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .slide-img {
+            width: 100%;
+            animation: slideUpDown 4s ease-in-out infinite alternate;
+            border-radius: 8px;
+        }
+
+        .slide-img:nth-child(2) {
+            animation-delay: 2s;
+        }
+
+        @keyframes slideUpDown {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Continuous Sliding Welcome Text -->
+    <div class="welcome-container">
+        <div class="welcome-wrapper" id="welcomeWrapper">
+            होमपेज वर तुमचे स्वागत आहे। &nbsp;&nbsp; 
+            येथे सर्व प्रकारच्या ऑनलाइन सुविधा उपलब्ध आहेत। &nbsp;&nbsp; 
+            सुलभ सेवा फक्त एक क्लिकवर। &nbsp;&nbsp;
+        </div>
+    </div>
+
+    <!-- Right Contact Box -->
+    <div class="top-contact" onclick="toggleNumber()">
+        <div>Contact</div>
+        <div class="contact-number" id="contactNumber">7499681291</div>
+    </div>
+
+    <!-- Left Box -->
+    <div class="left-box">
+        <h3>सुविधा</h3>
+        <ul>
+            <li><a href="https://mh.disastermanagement.mahait.org/PaymentStatus" target="_blank">अनुदान विषयक</a></li>
+            <li><a href="https://kusum.mahaurja.com/beneficiary/" target="_blank">सोलर पंप</a></li>
+            <li><a href="https://uidai.gov.in/en/" target="_blank">आधार विषयक</a></li>
+            <li><a href="https://mhfr.agristack.gov.in/farmer-registry-mh/#/checkEnrolmentStatus" target="_blank">अग्री स्टाक स्थिती</a></li>
+            <li><a href="https://echawadi.mahabhumi.gov.in/#/user/login" target="_blank">इ चावडी</a></li>
+            <li><a href="https://digitalsatbara.mahabhumi.gov.in/dslr" target="_blank">डिजिटल ७/१२</a></li>
+            <li><a href="https://bhulekh.mahabhumi.gov.in/" target="_blank">मोफत ७/१२</a></li>
+            <li><a href="https://cscservices.mahaonline.gov.in/Dashboard/Login.aspx" target="_blank">महा ऑनलाईन </a></li>
+        </ul>
+    </div>
+
+    <!-- Right Side Sliding Images -->
+    <div class="right-slider">
+        <img src="eco.jpg" alt="Image 1" class="slide-img">
+        <img src="eco.jpg" alt="Image 2" class="slide-img">
+    </div>
+
+    <script>
+        function toggleNumber() {
+            const number = document.getElementById("contactNumber");
+            number.style.display = (number.style.display === "block") ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
+<!-- Bottom Sliding Text -->
+<div class="bottom-slider">
+    <div class="bottom-wrapper">
+        सोलर पंप विषयी अधिक माहिती जाणुन घेण्यासाठी आजच संपर्क करा. 9146122143,9765738571 धन्यवाद
+    </div>
+</div>
+
+<style>
+    /* Bottom Sliding Message */
+    .bottom-slider {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        background-color: rgba(0,0,0,0.7);
+        z-index: 1000;
+        height: 50px;
+    }
+
+    .bottom-wrapper {
+        display: inline-block;
+        white-space: nowrap;
+        font-size: 20px;
+        font-weight: bold;
+        color: #fff;
+        padding: 10px 0;
+        animation: slideBottom 20s linear infinite;
+    }
+
+    @keyframes slideBottom {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+    }
+</style>
