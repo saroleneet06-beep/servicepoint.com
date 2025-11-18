@@ -182,17 +182,18 @@
             <li><a href="https://kusum.mahaurja.com/beneficiary/" target="_blank">सोलर पंप</a></li>
             <li><a href="https://uidai.gov.in/en/" target="_blank">आधार विषयक</a></li>
             <li><a href="https://mhfr.agristack.gov.in/farmer-registry-mh/#/checkEnrolmentStatus" target="_blank">अग्री स्टाक स्थिती</a></li>
-            <li><a href="https://echawadi.mahabhumi.gov.in/#/user/login" target="_blank">इ चावडी</a></li>
+            <li><a href="https://echawadi.mahabhumi.gov.in/#/user/login" target="_blank">मागणी निश्चिती </a></li>
             <li><a href="https://digitalsatbara.mahabhumi.gov.in/dslr" target="_blank">डिजिटल ७/१२</a></li>
             <li><a href="https://bhulekh.mahabhumi.gov.in/" target="_blank">मोफत ७/१२</a></li>
             <li><a href="https://cscservices.mahaonline.gov.in/Dashboard/Login.aspx" target="_blank">महा ऑनलाईन </a></li>
+            <li><a href="https://digitalsatbara.mahabhumi.gov.in/aaplichawdi" target="_blank">आपली चावडी  </a></li>
         </ul>
     </div>
 
     <!-- Right Side Sliding Images -->
     <div class="right-slider">
-        <img src="eco.jpg" alt="Image 1" class="slide-img">
-        <img src="eco.jpg" alt="Image 2" class="slide-img">
+        <img src="dd.jpg" alt="Image 1" class="slide-img">
+        <img src="dd.jpg" alt="Image 2" class="slide-img">
     </div>
 
     <script>
@@ -238,3 +239,60 @@
         100% { transform: translateX(-100%); }
     }
 </style>
+<!-- VK SEARCH BOX -->
+<div id="vkSearchBox" style="
+    position: fixed;
+    left: 20px;
+    bottom: 80px;
+    width: 250px;
+    background: rgba(0,0,0,0.65);
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+">
+    <h3 style="margin-top:0; color: #ff0;">Search VK Number</h3>
+
+    <label>Aadhaar Last 4 Digits:</label>
+    <input type="text" id="aadhaarInput" maxlength="4"
+           style="width:100%; padding:8px; border-radius:5px; border:none; margin-bottom:10px;">
+
+    <button onclick="searchVK()" 
+            style="width:100%; padding:10px; border:none; background:#ffc107; color:black; font-weight:bold; border-radius:5px; cursor:pointer;">
+        Search
+    </button>
+
+    <div id="resultBox" style="margin-top:10px; font-size:16px; font-weight:bold;"></div>
+</div>
+
+<script>
+let excelData = [];
+
+// JSON LOAD
+fetch("data.json")
+    .then(res => res.json())
+    .then(data => {
+        excelData = data;
+        console.log("JSON Loaded:", excelData);
+    });
+
+// SEARCH FUNCTION
+function searchVK() {
+    let input = document.getElementById("aadhaarInput").value.trim();
+
+    if (input.length !== 4) {
+        alert("कृपया आधार के अंतिम 4 अंक दर्ज करें");
+        return;
+    }
+
+    let result = excelData.find(row => row.Aadhaar_Last4 == input);
+
+    if (result) {
+        document.getElementById("resultBox").innerHTML =
+            "<span style='color:#0f0'>VK Number: " + result.VK_Number + "</span>";
+    } else {
+        document.getElementById("resultBox").innerHTML =
+            "<span style='color:#f00'>Not Found</span>";
+    }
+}
+</script>
+
