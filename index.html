@@ -19,7 +19,6 @@
             color: #fff;
         }
 
-        /* FIXED HEADER */
         #fixedHeader {
             position: fixed;
             top: 0;
@@ -35,9 +34,6 @@
         }
         .header-space { height: 80px; }
 
-        /* =======================
-           MODERN VK SEARCH BOX
-        ======================= */
         #vkSearchBox {
             width: 360px;
             margin: auto;
@@ -61,14 +57,13 @@
             color: #cce7ff;
         }
 
-        /* 🔥 NEW FIX — Dropdown text always visible */
         select, input {
             width: 100%;
             padding: 12px;
             border-radius: 10px;
             border: 1px solid #ccc;
-            background: rgba(255,255,255,0.9);   /* हल्का सफेद */
-            color: #000;                         /* काला text */
+            background: rgba(255,255,255,0.9);
+            color: #000;
             margin-top: 5px;
             font-size: 15px;
         }
@@ -118,7 +113,6 @@
             color: #003366;
         }
 
-        /* LEFT BOX */
         .left-box {
             position: absolute;
             top: 100px;
@@ -149,7 +143,6 @@
             text-decoration: none;
         }
 
-        /* CONTACT */
         .top-contact {
             position: absolute;
             top: 10px;
@@ -167,7 +160,6 @@
             font-weight: bold;
         }
 
-        /* BANNER */
         .welcome-container {
             position: absolute;
             top: 20px;
@@ -198,20 +190,17 @@
 
 <body>
 
-    <!-- BANNER -->
     <div class="welcome-container">
         <div class="welcome-wrapper">
             होमपेज वर तुमचे स्वागत आहे। &nbsp; येथे सर्व प्रकारच्या ऑनलाइन सुविधा उपलब्ध आहेत। &nbsp;
         </div>
     </div>
 
-    <!-- CONTACT -->
     <div class="top-contact" onclick="toggleNumber()">
         <div>Contact Us</div>
         <div class="contact-number" id="contactNumber">7499681291</div>
     </div>
 
-    <!-- LEFT BOX -->
     <div class="left-box">
         <h3>सुविधा</h3>
         <ul>
@@ -227,7 +216,6 @@
         </ul>
     </div>
 
-    <!-- SEARCH BOX -->
     <div id="vkSearchBox">
 
         <h2 style="margin-top:0; color:#ffeb3b; text-align:center;">Search VK Number</h2>
@@ -261,12 +249,18 @@
     let jsonData = [];
     let selectedFarmer = null;
 
-    fetch("clean_data.json")
-        .then(res => res.json())
-        .then(data => {
-            jsonData = data;
-            loadSubdistricts();
-        });
+    /* ========== FIXED JSON LOADER (FINAL FILE NAMES) ========== */
+
+    Promise.all([
+        fetch("final_data_part1.json").then(r => r.json()),
+        fetch("final_data_part2.json").then(r => r.json()),
+        fetch("final_data_part3.json").then(r => r.json()),
+        fetch("final_data_part4.json").then(r => r.json())
+    ])
+    .then(all => {
+        jsonData = [].concat(...all);
+        loadSubdistricts();
+    });
 
     function loadSubdistricts() {
         let subs = [...new Set(jsonData.map(d => d.Subdistrict))];
@@ -370,13 +364,3 @@
 
 </body>
 </html>
-<!-- BOTTOM SLIDER -->
-<div class="bottom-slide">
-    <div class="slider-box">
-        <span>सोलर पंप विषयी अधिक माहितीसाठी संपर्क 9146122143, 9765738571</span>
-        <span>सोलर पंप विषयी अधिक माहितीसाठी संपर्क 9146122143, 9765738571</span>
-    </div>
-</div>
-
-<style>
-    .
