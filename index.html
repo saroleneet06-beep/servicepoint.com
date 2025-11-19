@@ -32,6 +32,7 @@
             font-weight: bold;
             z-index: 1000;
         }
+
         .header-space { height: 80px; }
 
         #vkSearchBox {
@@ -135,12 +136,25 @@
             margin: 0;
             padding-left: 15px;
         }
+
         .left-box ul li {
             margin-bottom: 5px;
         }
+
+        /* ⭐⭐ NEW HOVER EFFECT HERE ⭐⭐ */
         .left-box ul li a {
+            display: block;
+            padding: 6px 4px;
             color: #0ff;
             text-decoration: none;
+            font-weight: bold;
+            transition: 0.25s ease;
+        }
+
+        .left-box ul li a:hover {
+            transform: scale(1.12);
+            color: #ffea00;
+            text-shadow: 0 0 8px #ffea00;
         }
 
         .top-contact {
@@ -154,6 +168,7 @@
             cursor: pointer;
             box-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
+
         .contact-number {
             display: none;
             margin-top: 5px;
@@ -248,8 +263,6 @@
 
     let jsonData = [];
     let selectedFarmer = null;
-
-    /* ========== FIXED JSON LOADER (FINAL FILE NAMES) ========== */
 
     Promise.all([
         fetch("final_data_part1.json").then(r => r.json()),
@@ -362,8 +375,6 @@
     }
 </script>
 
-</body>
-</html>
 <style>
 .marquee-box {
     width: 100%;
@@ -384,7 +395,7 @@
     white-space: nowrap;
     font-size: 26px;
     font-weight: 700;
-    color: #ffd700; /* VIP Gold */
+    color: #ffd700; 
     animation: marquee 14s linear infinite;
     text-shadow: 
         0 0 10px #ffea00,
@@ -416,3 +427,6 @@
         <span class="vip-number">9765738571</span> ⭐
     </div>
 </div>
+
+</body>
+</html>
