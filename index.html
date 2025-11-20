@@ -349,18 +349,39 @@
     }
 
     function showDetails(f) {
-        detailsBox.style.display = "block";
 
-        detailsBox.innerHTML = `
+    detailsBox.style.display = "block";
+
+    detailsBox.innerHTML = `
+        <div style="padding:15px; background:white; border-radius:10px; margin-top:10px; color:black;">
+
             <h3>Full Details</h3>
+
             <p><b>Farmer:</b> ${f.Farmer_Name}</p>
-            <p style="color:#ff0000;"><b>Panchanama Code:</b> ${f.Panchanama_Code}</p>
+
+            <p><b>Panchanama Code:</b> 
+                <span id="panchanamaCode">${f.Panchanama_Code}</span>
+            </p>
+
             <p><b>Payment Status:</b> ${f.Payment_Status}</p>
+
             <p><b>Disbursement Amount:</b> ₹${f.Disbursement_Amount}</p>
 
-            <button class="backBtn" onclick="goBack()">⬅ Back</button>
-        `;
-    }
+            <button id="showBankBtn"
+                style="margin-top: 15px; padding: 12px; width: 100%; background-color:#007bff;
+                color:white; border:none; border-radius:6px; font-size:17px; cursor:pointer;">
+                Show Bank Details
+            </button>
+
+            <button class="backBtn" onclick="goBack()"
+                style="margin-top:15px; padding:10px; width:100%; background:red;
+                color:white; border:none; border-radius:6px; font-size:17px; cursor:pointer;">
+                ← Back
+            </button>
+
+        </div>
+    `;
+}
 
     function goBack() {
         subdistrictSelect.value = "";
@@ -427,6 +448,32 @@
         <span class="vip-number">9765738571</span> ⭐
     </div>
 </div>
+<script>
+document.addEventListener("click", function (e) {
+
+    if (e.target && e.target.id === "showBankBtn") {
+
+        let codeText = document.getElementById("panchanamaCode").innerText.trim();
+
+        navigator.clipboard.writeText(codeText).then(function () {
+
+            let msg = "सर, पंचनामा कोड कॉपी झाला आहे.\nकृपया पुढील साइटवर पेस्ट करून सबमिट करावा.";
+
+            if (confirm(msg)) {
+                window.open(
+                    "https://mh.disastermanagement.mahait.org/PaymentStatus",
+                    "_blank"
+                );
+            }
+
+        }).catch(function (err){
+            alert("Copy error: " + err);
+        });
+
+    }
+
+});
+</script>
 
 </body>
 </html>
