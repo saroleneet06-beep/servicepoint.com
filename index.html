@@ -468,42 +468,81 @@ document.addEventListener("click", function (e) {
 
 });
 </script>
+<!-- RIGHT SIDE IMAGE SLIDER STATIC STACK (3 IMAGES) -->
+<div class="right-gallery">
+    <img src="eco.jpg">
+    <img src="eco.jpg">
+    <img src="eco.jpg">
+</div>
 
 </body>
 </html>
-<style>
-    .bottom-scroll {
-        width: 100%;
-        background: #000;
-        color: #fff;
-        padding: 15px 0;
-        position: fixed;
-        bottom: 20px; /* नीचे से ऊपर उठाया */
-        left: 0;
-        font-size: 26px; /* text बड़ा */
-        font-weight: bold;
-        overflow: hidden;
-        white-space: nowrap;
-        z-index: 9999;
-        border-radius: 8px 8px 0 0; /* थोड़ा smooth design */
-    }
+<style>.right-gallery {
+    position: fixed;
+    top: 50%;                /* screen ke center me */
+    right: 10px;             /* right side se thoda andar */
+    transform: translateY(-50%);
+    width: 150px;            /* image ki width */
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;               /* image ke beech gap */
+}
 
-    .bottom-scroll span {
-        display: inline-block;
-        padding-left: 100%;
-        animation: scroll-left 20s linear infinite;
-    }
+.right-gallery img {
+    width: 100%;
+    border-radius: 12px;
+    border: 2px solid gold;
+    box-shadow: 0 0 12px rgba(255,215,0,0.8);
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Background Video</title>
 
-    @keyframes scroll-left {
-        from {
-            transform: translateX(0%);
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
         }
-        to {
-            transform: translateX(-100%);
-        }
-    }
-</style>
 
-<div class="bottom-scroll">
-    <span>सोलर पंप विषयी सर्व/अधिक माहितीसाठी संपर्क : 9146122143, 9765738571,</span>
-</div>
+        /* Background video */
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            filter: brightness(70%); /* Thoda dark effect */
+        }
+
+        /* Page content */
+        .content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+            margin-top: 150px;
+            font-size: 40px;
+            text-shadow: 0px 0px 10px black;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Video -->
+    <video autoplay loop muted playsinline class="bg-video">
+        <source src="eco.mp4" type="video/mp4">
+    </video>
+
+    <div class="content">
+        Welcome to ServicePoint.com
+    </div>
+
+</body>
+</html>
+
