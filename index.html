@@ -19,21 +19,83 @@
             color: #fff;
         }
 
-        #fixedHeader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background:#003366;
-            color:white;
-            padding: 15px;
-            text-align:center;
-            font-size: 22px;
-            font-weight: bold;
-            z-index: 1000;
+        .welcome-container {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            width: 80%;
+            height: 50px;
+            background-color: rgba(0,0,0,0.7);
+            border-radius: 5px;
         }
 
-        .header-space { height: 80px; }
+        .welcome-wrapper {
+            display: inline-block;
+            white-space: nowrap;
+            font-size: 28px;
+            font-weight: bold;
+            padding: 10px 0;
+            animation: marquee 15s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .top-contact {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background-color: rgba(40, 167, 69, 0.9);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .contact-number { display: none; margin-top: 5px; font-weight: bold; }
+
+        .left-box {
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            width: 220px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .left-box h3 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+            font-weight: bold;
+            color: #ff0;
+        }
+
+        .left-box ul {
+            margin: 0;
+            padding-left: 15px;
+        }
+
+        .left-box ul li a {
+            display: block;
+            padding: 6px 4px;
+            color: #0ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.25s ease;
+        }
+
+        .left-box ul li a:hover {
+            transform: scale(1.12);
+            color: #ffea00;
+            text-shadow: 0 0 8px #ffea00;
+        }
 
         #vkSearchBox {
             width: 360px;
@@ -44,11 +106,6 @@
             border-radius: 16px;
             backdrop-filter: blur(8px);
             box-shadow: 0 0 25px rgba(0,0,0,0.9);
-            transition: 0.3s;
-        }
-
-        #vkSearchBox:hover {
-            box-shadow: 0 0 35px rgba(0,0,0,1);
         }
 
         label {
@@ -62,11 +119,9 @@
             width: 100%;
             padding: 12px;
             border-radius: 10px;
-            border: 1px solid #ccc;
             background: rgba(255,255,255,0.9);
-            color: #000;
-            margin-top: 5px;
             font-size: 15px;
+            margin-top: 5px;
         }
 
         button {
@@ -114,108 +169,44 @@
             color: #003366;
         }
 
-        .left-box {
-            position: absolute;
-            top: 100px;
-            left: 20px;
-            width: 220px;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 13px;
+        /* RIGHT IMAGE STACK */
+        .right-gallery {
+            position: fixed;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            width: 150px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 9999;
         }
 
-        .left-box h3 {
-            margin: 0 0 5px 0;
-            font-size: 16px;
-            font-weight: bold;
-            color: #ff0;
-        }
-
-        .left-box ul {
-            margin: 0;
-            padding-left: 15px;
-        }
-
-        .left-box ul li {
-            margin-bottom: 5px;
-        }
-
-        /* ⭐⭐ NEW HOVER EFFECT HERE ⭐⭐ */
-        .left-box ul li a {
-            display: block;
-            padding: 6px 4px;
-            color: #0ff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.25s ease;
-        }
-
-        .left-box ul li a:hover {
-            transform: scale(1.12);
-            color: #ffea00;
-            text-shadow: 0 0 8px #ffea00;
-        }
-
-        .top-contact {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            background-color: rgba(40, 167, 69, 0.9);
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-        }
-
-        .contact-number {
-            display: none;
-            margin-top: 5px;
-            font-weight: bold;
-        }
-
-        .welcome-container {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            overflow: hidden;
-            width: 80%;
-            height: 50px;
-            background-color: rgba(0,0,0,0.7);
-            border-radius: 5px;
-        }
-
-        .welcome-wrapper {
-            display: inline-block;
-            white-space: nowrap;
-            font-size: 28px;
-            font-weight: bold;
-            padding: 10px 0;
-            animation: marquee 15s linear infinite;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+        .right-gallery img {
+            width: 100%;
+            border-radius: 12px;
+            border: 2px solid gold;
+            box-shadow: 0 0 12px rgba(255,215,0,0.8);
         }
     </style>
 </head>
 
 <body>
 
+    <!-- TOP MARQUEE -->
     <div class="welcome-container">
         <div class="welcome-wrapper">
             होमपेज वर तुमचे स्वागत आहे। &nbsp; येथे सर्व प्रकारच्या ऑनलाइन सुविधा उपलब्ध आहेत। &nbsp;
         </div>
     </div>
 
+    <!-- CONTACT BOX -->
     <div class="top-contact" onclick="toggleNumber()">
         <div>Contact Us</div>
         <div class="contact-number" id="contactNumber">7499681291</div>
     </div>
 
+    <!-- LEFT MENU -->
     <div class="left-box">
         <h3>सुविधा</h3>
         <ul>
@@ -231,9 +222,10 @@
         </ul>
     </div>
 
+    <!-- MAIN SEARCH BOX -->
     <div id="vkSearchBox">
 
-        <h2 style="margin-top:0; color:#ffeb3b; text-align:center;">Search VK Number</h2>
+        <h2 style="color:#ffeb3b; text-align:center;">Search VK Number</h2>
 
         <label>Subdistrict</label>
         <select id="subdistrictSelect">
@@ -250,8 +242,8 @@
 
         <button onclick="searchAadhaar()">Search</button>
 
-        <div id="farmerList" style="margin-top:15px; display:none;"></div>
-        <div id="grList" style="margin-top:15px; display:none;"></div>
+        <div id="farmerList" style="display:none;"></div>
+        <div id="grList" style="display:none;"></div>
         <div id="detailsBox"></div>
     </div>
 
@@ -261,8 +253,8 @@
         num.style.display = (num.style.display === "block") ? "none" : "block";
     }
 
+    /* LOAD JSON */
     let jsonData = [];
-    let selectedFarmer = null;
 
     Promise.all([
         fetch("final_data_part1.json").then(r => r.json()),
@@ -278,197 +270,158 @@
     function loadSubdistricts() {
         let subs = [...new Set(jsonData.map(d => d.Subdistrict))];
         subdistrictSelect.innerHTML = `<option value="">Select Subdistrict</option>`;
-
-        subs.forEach(s => {
-            let opt = document.createElement("option");
-            opt.value = s;
-            opt.textContent = s;
-            subdistrictSelect.appendChild(opt);
-        });
+        subs.forEach(s => subdistrictSelect.innerHTML += `<option>${s}</option>`);
     }
 
     subdistrictSelect.addEventListener("change", function () {
         let sd = this.value;
 
-        let villages = [...new Set(jsonData
-                .filter(d => d.Subdistrict === sd)
-                .map(d => d.Village))];
+        let villages = [...new Set(
+            jsonData.filter(d => d.Subdistrict === sd).map(d => d.Village)
+        )];
 
         villageSelect.innerHTML = "<option value=''>Select Village</option>";
-
-        villages.forEach(v => {
-            let opt = document.createElement("option");
-            opt.value = v;
-            opt.textContent = v;
-            villageSelect.appendChild(opt);
-        });
+        villages.forEach(v => villageSelect.innerHTML += `<option>${v}</option>`);
 
         farmerList.style.display = "none";
         grList.style.display = "none";
         detailsBox.style.display = "none";
     });
 
-    function searchAadhaar() {
-        let sd = subdistrictSelect.value;
-        let vg = villageSelect.value;
-        let a4 = aadhaarInput.value;
 
-        if (a4.length !== 4) { alert("Enter last 4 digits"); return; }
+/* *****************************************************************
+   ⭐ FINAL FIX — UNIQUE FARMER NAME (EVEN WITH SPACES / CAPS)
+******************************************************************* */
+function searchAadhaar() {
+    let sd = subdistrictSelect.value;
+    let vg = villageSelect.value;
+    let a4 = aadhaarInput.value;
 
-        let matches = jsonData.filter(d =>
-            d.Subdistrict === sd &&
-            d.Village === vg &&
-            d.Aadhaar_Last4 == a4
-        );
+    if (a4.length !== 4) return alert("Enter last 4 digits");
 
-        if (matches.length === 0) { alert("Not found"); return; }
+    let matches = jsonData.filter(d =>
+        d.Subdistrict === sd &&
+        d.Village === vg &&
+        d.Aadhaar_Last4 == a4
+    );
 
-        farmerList.style.display = "block";
-        farmerList.innerHTML = "<h3>Select Farmer</h3>";
+    if (matches.length === 0) return alert("Not found");
 
-        matches.forEach(f => {
-            let btn = document.createElement("button");
-            btn.className = "farmerBtn";
-            btn.innerHTML = f.Farmer_Name;
-            btn.onclick = () => loadGRList(f);
-            farmerList.appendChild(btn);
-        });
-    }
+    // CLEAN farmer names (remove spaces + uppercase compare)
+    let cleaned = matches.map(m => ({
+        original: m.Farmer_Name,
+        clean: m.Farmer_Name.trim().toUpperCase()
+    }));
 
-    function loadGRList(f) {
-        selectedFarmer = f;
+    let uniqueClean = [...new Set(cleaned.map(x => x.clean))];
 
-        grList.style.display = "block";
-        grList.innerHTML = "<h3>Select GR Reference No</h3>";
+    let uniqueFarmers = uniqueClean.map(c =>
+        cleaned.find(x => x.clean === c).original
+    );
+
+    farmerList.style.display = "block";
+    farmerList.innerHTML = "<h3>Select Farmer</h3>";
+
+    uniqueFarmers.forEach(name => {
+        let btn = document.createElement("button");
+        btn.className = "farmerBtn";
+        btn.innerHTML = name;
+        btn.onclick = () => loadGRList(name, matches);
+        farmerList.appendChild(btn);
+    });
+}
+
+
+/* *****************************************************************
+   ⭐ FINAL FIX — UNIQUE GR FOR EACH FARMER
+******************************************************************* */
+function loadGRList(name, matches) {
+
+    let farmerRecords = matches.filter(f =>
+        f.Farmer_Name.trim().toUpperCase() === name.trim().toUpperCase()
+    );
+
+    let uniqueGR = [...new Set(farmerRecords.map(r => r.GR_Reference_No))];
+
+    grList.style.display = "block";
+    grList.innerHTML = "<h3>Select GR Reference No</h3>";
+
+    uniqueGR.forEach(gr => {
+        let rec = farmerRecords.find(r => r.GR_Reference_No === gr);
 
         let btn = document.createElement("button");
         btn.className = "grBtn";
-        btn.innerHTML = f.GR_Reference_No;
-        btn.onclick = () => showDetails(f);
-        grList.appendChild(btn);
-    }
+        btn.innerHTML = gr;
+        btn.onclick = () => showDetails(rec);
 
-    function showDetails(f) {
+        grList.appendChild(btn);
+    });
+}
+
+
+/* DETAILS */
+function showDetails(f) {
 
     detailsBox.style.display = "block";
 
     detailsBox.innerHTML = `
-        <div style="padding:15px; background:white; border-radius:10px; margin-top:10px; color:black;">
+        <div style="padding:15px; background:white; border-radius:10px; color:black;">
 
             <h3>Full Details</h3>
 
             <p><b>Farmer:</b> ${f.Farmer_Name}</p>
 
-            <p><b>Panchanama Code:</b> 
+            <p><b>Panchanama Code:</b>
                 <span id="panchanamaCode">${f.Panchanama_Code}</span>
             </p>
-
-           
 
             <p><b>Disbursement Amount:</b> ₹${f.Disbursement_Amount}</p>
 
             <button id="showBankBtn"
-                style="margin-top: 15px; padding: 12px; width: 100%; background-color:#007bff;
-                color:white; border:none; border-radius:6px; font-size:17px; cursor:pointer;">
+                style="margin-top:15px; padding:12px; width:100%; background:#007bff; color:white; border:none; border-radius:6px;">
                 Show Bank Details
             </button>
 
-            <button class="backBtn" onclick="goBack()"
-                style="margin-top:15px; padding:10px; width:100%; background:red;
-                color:white; border:none; border-radius:6px; font-size:17px; cursor:pointer;">
-                ← Back
-            </button>
-
+            <button class="backBtn" onclick="goBack()">← Back</button>
         </div>
     `;
 }
 
-    function goBack() {
-        subdistrictSelect.value = "";
-        villageSelect.innerHTML = "<option value=''>Select Village</option>";
-        aadhaarInput.value = "";
+function goBack() {
+    subdistrictSelect.value = "";
+    villageSelect.innerHTML = "<option value=''>Select Village</option>";
+    aadhaarInput.value = "";
 
-        farmerList.style.display = "none";
-        grList.style.display = "none";
-        detailsBox.style.display = "none";
+    farmerList.style.display = "none";
+    grList.style.display = "none";
+    detailsBox.style.display = "none";
 
-        loadSubdistricts();
-    }
-</script>
-
-<style>
-.marquee-box {
-    width: 100%;
-    background: linear-gradient(90deg, #2b2b2b, #000000, #2b2b2b);
-    padding: 12px 0;
-    overflow: hidden;
-    position: fixed;
-    bottom: 20px; 
-    left: 0;
-    z-index: 9999;
-    border-top: 2px solid #d4af37;
-    border-bottom: 2px solid #d4af37;
-    box-shadow: 0 0 12px #d4af37;
+    loadSubdistricts();
 }
 
-.marquee-text {
-    display: inline-block;
-    white-space: nowrap;
-    font-size: 26px;
-    font-weight: 700;
-    color: #ffd700; 
-    animation: marquee 14s linear infinite;
-    text-shadow: 
-        0 0 10px #ffea00,
-        0 0 20px #ffd700,
-        0 0 30px #ffbf00,
-        0 0 40px #ff9900;
-    letter-spacing: 1px;
-}
 
-.vip-number {
-    color: #fff;
-    font-weight: 900;
-    text-shadow:
-        0 0 12px #ffea00,
-        0 0 22px #ffffff,
-        0 0 35px #ffbf00;
-}
-
-@keyframes marquee {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-}
-</style>
-
-<script>
+/* COPY PANCHANAMA + OPEN SITE */
 document.addEventListener("click", function (e) {
 
     if (e.target && e.target.id === "showBankBtn") {
 
-        let codeText = document.getElementById("panchanamaCode").innerText.trim();
+        let code = document.getElementById("panchanamaCode").innerText.trim();
 
-        navigator.clipboard.writeText(codeText).then(function () {
+        navigator.clipboard.writeText(code).then(function () {
 
-           let msg = "खालील पंचनामा कोड कॉपी झाला आहे.\nकृपया पुढील साइटवर पेस्ट करून सबमिट करावा, अनुदान जमा झाल्या विषयी सर्व माहिती मिळेल.";
-
+            let msg = "खालील पंचनामा कोड कॉपी झाला आहे.\nकृपया पुढील साइटवर पेस्ट करून सबमिट करावा.";
 
             if (confirm(msg)) {
-                window.open(
-                    "https://mh.disastermanagement.mahait.org/PaymentStatus",
-                    "_blank"
-                );
+                window.open("https://mh.disastermanagement.mahait.org/PaymentStatus", "_blank");
             }
 
-        }).catch(function (err){
-            alert("Copy error: " + err);
         });
-
     }
-
 });
 </script>
-<!-- RIGHT SIDE IMAGE SLIDER STATIC STACK (3 IMAGES) -->
+
+
+<!-- RIGHT SIDE STATIC IMAGE STACK -->
 <div class="right-gallery">
     <img src="eco.jpg">
     <img src="eco.jpg">
@@ -477,72 +430,20 @@ document.addEventListener("click", function (e) {
 
 </body>
 </html>
-<style>.right-gallery {
+<video autoplay loop muted playsinline id="bgVideo">
+    <source src="eco.mp4" type="video/mp4">
+</video>
+
+<style>
+#bgVideo {
     position: fixed;
-    top: 50%;                /* screen ke center me */
-    right: 10px;             /* right side se thoda andar */
-    transform: translateY(-50%);
-    width: 150px;            /* image ki width */
-    z-index: 99999;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;               /* image ke beech gap */
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1;
 }
-
-.right-gallery img {
-    width: 100%;
-    border-radius: 12px;
-    border: 2px solid gold;
-    box-shadow: 0 0 12px rgba(255,215,0,0.8);
-}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Background Video</title>
-
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        /* Background video */
-        .bg-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -1;
-            object-fit: cover;
-            filter: brightness(70%); /* Thoda dark effect */
-        }
-
-        /* Page content */
-        .content {
-            position: relative;
-            z-index: 2;
-            color: white;
-            text-align: center;
-            margin-top: 150px;
-            font-size: 40px;
-            text-shadow: 0px 0px 10px black;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Background Video -->
-    <video autoplay loop muted playsinline class="bg-video">
-        <source src="eco.mp4" type="video/mp4">
-    </video>
-
-    <div class="content">
-        Welcome to ServicePoint.com
-    </div>
-
-</body>
-</html>
-
+</style>
