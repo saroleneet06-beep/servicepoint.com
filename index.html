@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="mr">
+
 <head>
-    <title>ServicePoint.com</title>
     <meta charset="utf-8" />
+    <title>ServicePoint.com</title>
 
     <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 
@@ -11,12 +12,22 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-image: url('www.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            min-height: 100vh;
+            background: transparent !important;
             color: #fff;
+        }
+
+        /* BACKGROUND VIDEO FIX */
+        #bgVideo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            object-fit: cover;
         }
 
         .welcome-container {
@@ -55,8 +66,8 @@
             font-weight: bold;
             cursor: pointer;
             box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            z-index: 9999;
         }
-
         .contact-number { display: none; margin-top: 5px; font-weight: bold; }
 
         .left-box {
@@ -169,7 +180,6 @@
             color: #003366;
         }
 
-        /* RIGHT IMAGE STACK */
         .right-gallery {
             position: fixed;
             top: 50%;
@@ -188,17 +198,48 @@
             border: 2px solid gold;
             box-shadow: 0 0 12px rgba(255,215,0,0.8);
         }
+
+        /* LEFT-BOX TOP PHOTO */
+        .left-box-top {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            width: 130px;
+            text-align: center;
+            z-index: 9999;
+        }
+
+        .top-photo {
+            width: 100%;
+            border-radius: 12px;
+            border: 2px solid gold;
+            box-shadow: 0 0 12px rgba(255,215,0,0.8);
+        }
+
+        .photo-name {
+            margin-top: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #ffea00;
+            text-shadow: 0 0 8px black;
+        }
     </style>
 </head>
 
-<body><!-- TOP FIXED HEADER -->
+<body>
+
+<!-- BACKGROUND VIDEO PLACED CORRECTLY -->
+<video autoplay muted loop playsinline id="bgVideo">
+    <source src="eco.mp4" type="video/mp4">
+</video>
+
+<!-- TOP HEADER -->
 <div style="
     position: fixed;
     top: 3mm;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 9999;
-">
+    z-index: 9999;">
     <span style="
         font-size: 32px;
         font-weight: bold;
@@ -207,140 +248,108 @@
         background: rgba(0,0,0,0.65);
         padding: 8px 16px;
         border-radius: 6px;
-        white-space: nowrap;
-    ">
+        white-space: nowrap;">
         उपविभागीय अधिकारी कार्यालय, गंगाखेड
     </span>
 </div>
 
-    <!-- CONTACT BOX -->
-    <div class="top-contact" onclick="toggleNumber()">
-        <div>Contact Us</div>
-        <div class="contact-number" id="contactNumber">7499681291</div>
-    </div>
+<!-- CONTACT BOX -->
+<div class="top-contact" onclick="toggleNumber()">
+    <div>Contact Us</div>
+    <div class="contact-number" id="contactNumber">7499681291</div>
+</div>
 
-    <!-- LEFT MENU --><!-- LEFT BOX TOP IMAGE + NAME -->
+<!-- LEFT BOX TOP -->
 <div class="left-box-top">
     <img src="pa1.jpg" class="top-photo">
     <div class="photo-name">⚫ श्री.जीवराज डापकर,उपविभागीय अधिकारी कार्यालय, गंगाखेड</div>
 </div>
 
-<style>
-.left-box-top {
-    position: absolute;
-    top: 10px;       /* left-box के ऊपर exact fit */
-    left: 20px;
-    width: 130px;
-    text-align: center;
-    z-index: 9999;
-}
+<!-- LEFT MENU -->
+<div class="left-box">
+    <h3>सुविधा</h3>
+    <ul>
+        <li><a href="https://mh.disastermanagement.mahait.org/PaymentStatus" target="_blank">अनुदान विषयक</a></li>
+        <li><a href="https://kusum.mahaurja.com/beneficiary/" target="_blank">सोलर पंप</a></li>
+        <li><a href="https://uidai.gov.in/en/" target="_blank">आधार विषयक</a></li>
+        <li><a href="https://mhfr.agristack.gov.in/farmer-registry-mh/#/checkEnrolmentStatus" target="_blank">अग्री स्टाक स्थिती</a></li>
+        <li><a href="https://echawadi.mahabhumi.gov.in/#/user/login" target="_blank">मागणी निश्चिती</a></li>
+        <li><a href="https://digitalsatbara.mahabhumi.gov.in/dslr" target="_blank">डिजिटल ७/१२</a></li>
+        <li><a href="https://bhulekh.mahabhumi.gov.in/" target="_blank">मोफत ७/१२</a></li>
+        <li><a href="https://cscservices.mahaonline.gov.in/Dashboard/Login.aspx" target="_blank">माहा ऑनलाईन</a></li>
+        <li><a href="https://digitalsatbara.mahabhumi.gov.in/aaplichawdi" target="_blank">आपली चावडी</a></li>
+    </ul>
+</div>
 
-.top-photo {
-    width: 100%;
-    border-radius: 12px;
-    border: 2px solid gold;
-    box-shadow: 0 0 12px rgba(255,215,0,0.8);
-}
+<!-- MAIN SEARCH BOX -->
+<div id="vkSearchBox">
 
-.photo-name {
-    margin-top: 6px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #ffea00;
-    text-shadow: 0 0 8px black;
-}
-</style>
+    <h2 style="color:#ffeb3b; text-align:center;">Search VK Number</h2>
 
-    <div class="left-box">
-        <h3>सुविधा</h3>
-        <ul>
-            <li><a href="https://mh.disastermanagement.mahait.org/PaymentStatus" target="_blank">अनुदान विषयक</a></li>
-            <li><a href="https://kusum.mahaurja.com/beneficiary/" target="_blank">सोलर पंप</a></li>
-            <li><a href="https://uidai.gov.in/en/" target="_blank">आधार विषयक</a></li>
-            <li><a href="https://mhfr.agristack.gov.in/farmer-registry-mh/#/checkEnrolmentStatus" target="_blank">अग्री स्टाक स्थिती</a></li>
-            <li><a href="https://echawadi.mahabhumi.gov.in/#/user/login" target="_blank">मागणी निश्चिती</a></li>
-            <li><a href="https://digitalsatbara.mahabhumi.gov.in/dslr" target="_blank">डिजिटल ७/१२</a></li>
-            <li><a href="https://bhulekh.mahabhumi.gov.in/" target="_blank">मोफत ७/१२</a></li>
-            <li><a href="https://cscservices.mahaonline.gov.in/Dashboard/Login.aspx" target="_blank">माहा ऑनलाईन</a></li>
-            <li><a href="https://digitalsatbara.mahabhumi.gov.in/aaplichawdi" target="_blank">आपली चावडी</a></li>
-        </ul>
-    </div>
+    <label>Subdistrict</label>
+    <select id="subdistrictSelect">
+        <option value="">Select Subdistrict</option>
+    </select>
 
-    <!-- MAIN SEARCH BOX -->
-    <div id="vkSearchBox">
+    <label>Village</label>
+    <select id="villageSelect">
+        <option value="">Select Village</option>
+    </select>
 
-        <h2 style="color:#ffeb3b; text-align:center;">Search VK Number</h2>
+    <label>Enter Aadhaar Last 4 Digits</label>
+    <input type="text" id="aadhaarInput" maxlength="4">
 
-        <label>Subdistrict</label>
-        <select id="subdistrictSelect">
-            <option value="">Select Subdistrict</option>
-        </select>
+    <button onclick="searchAadhaar()">Search</button>
 
-        <label>Village</label>
-        <select id="villageSelect">
-            <option value="">Select Village</option>
-        </select>
-
-        <label>Enter Aadhaar Last 4 Digits</label>
-        <input type="text" id="aadhaarInput" maxlength="4">
-
-        <button onclick="searchAadhaar()">Search</button>
-
-        <div id="farmerList" style="display:none;"></div>
-        <div id="grList" style="display:none;"></div>
-        <div id="detailsBox"></div>
-    </div>
+    <div id="farmerList" style="display:none;"></div>
+    <div id="grList" style="display:none;"></div>
+    <div id="detailsBox"></div>
+</div>
 
 <script>
-    function toggleNumber() {
-        let num = document.getElementById("contactNumber");
-        num.style.display = (num.style.display === "block") ? "none" : "block";
-    }
+function toggleNumber() {
+    let num = document.getElementById("contactNumber");
+    num.style.display = (num.style.display === "block") ? "none" : "block";
+}
 
-    /* LOAD JSON */
-    let jsonData = [];
+/* JSON LOAD FIX */
+let jsonData = [];
 
-    Promise.all([
-        fetch("final_data_part1.json").then(r => r.json()),
-        fetch("final_data_part2.json").then(r => r.json()),
-        fetch("final_data_part3.json").then(r => r.json()),
-        fetch("final_data_part4.json").then(r => r.json()),
-        fetch("gangakhed.json").then(r => r.json()),
-        fetch("purna1.json").then(r => r.json()),
-        fetch("purna2.json").then(r => r.json()),
-        fetch("purna3.json").then(r => r.json()),
-        fetch("purna4.json").then(r => r.json())
-    ])
-    .then(all => {
-        jsonData = [].concat(...all);
-        loadSubdistricts();
-    });
+Promise.all([
+    fetch("final_data_part1.json").then(r => r.json()),
+    fetch("final_data_part2.json").then(r => r.json()),
+    fetch("final_data_part3.json").then(r => r.json()),
+    fetch("final_data_part4.json").then(r => r.json()),
+    fetch("gangakhed.json").then(r => r.json())
+    
+])
+.then(all => {
+    jsonData = [].concat(...all);
+    loadSubdistricts();
+});
 
-    function loadSubdistricts() {
-        let subs = [...new Set(jsonData.map(d => d.Subdistrict))];
-        subdistrictSelect.innerHTML = `<option value="">Select Subdistrict</option>`;
-        subs.forEach(s => subdistrictSelect.innerHTML += `<option>${s}</option>`);
-    }
+function loadSubdistricts() {
+    let subs = [...new Set(jsonData.map(d => d.Subdistrict))];
+    subdistrictSelect.innerHTML = `<option value="">Select Subdistrict</option>`;
+    subs.forEach(s => subdistrictSelect.innerHTML += `<option>${s}</option>`);
+}
 
-    subdistrictSelect.addEventListener("change", function () {
-        let sd = this.value;
+subdistrictSelect.addEventListener("change", function () {
+    let sd = this.value;
 
-        let villages = [...new Set(
-            jsonData.filter(d => d.Subdistrict === sd).map(d => d.Village)
-        )];
+    let villages = [...new Set(
+        jsonData.filter(d => d.Subdistrict === sd).map(d => d.Village)
+    )];
 
-        villageSelect.innerHTML = "<option value=''>Select Village</option>";
-        villages.forEach(v => villageSelect.innerHTML += `<option>${v}</option>`);
+    villageSelect.innerHTML = "<option value=''>Select Village</option>";
+    villages.forEach(v => villageSelect.innerHTML += `<option>${v}</option>`);
 
-        farmerList.style.display = "none";
-        grList.style.display = "none";
-        detailsBox.style.display = "none";
-    });
+    farmerList.style.display = "none";
+    grList.style.display = "none";
+    detailsBox.style.display = "none";
+});
 
-
-/* *****************************************************************
-   ⭐ FINAL FIX — UNIQUE FARMER NAME (EVEN WITH SPACES / CAPS)
-******************************************************************* */
+/* AADHAAR SEARCH */
 function searchAadhaar() {
     let sd = subdistrictSelect.value;
     let vg = villageSelect.value;
@@ -356,7 +365,6 @@ function searchAadhaar() {
 
     if (matches.length === 0) return alert("Not found");
 
-    // CLEAN farmer names (remove spaces + uppercase compare)
     let cleaned = matches.map(m => ({
         original: m.Farmer_Name,
         clean: m.Farmer_Name.trim().toUpperCase()
@@ -380,12 +388,8 @@ function searchAadhaar() {
     });
 }
 
-
-/* *****************************************************************
-   ⭐ FINAL FIX — UNIQUE GR FOR EACH FARMER
-******************************************************************* */
+/* GR LIST */
 function loadGRList(name, matches) {
-
     let farmerRecords = matches.filter(f =>
         f.Farmer_Name.trim().toUpperCase() === name.trim().toUpperCase()
     );
@@ -407,8 +411,7 @@ function loadGRList(name, matches) {
     });
 }
 
-
-/* DETAILS */
+/* FULL DETAILS */
 function showDetails(f) {
 
     detailsBox.style.display = "block";
@@ -448,7 +451,6 @@ function goBack() {
     loadSubdistricts();
 }
 
-
 /* COPY PANCHANAMA + OPEN SITE */
 document.addEventListener("click", function (e) {
 
@@ -469,8 +471,7 @@ document.addEventListener("click", function (e) {
 });
 </script>
 
-
-<!-- RIGHT SIDE STATIC IMAGE STACK -->
+<!-- RIGHT IMAGES -->
 <div class="right-gallery">
     <img src="eco.jpg">
     <img src="eco.jpg">
@@ -479,20 +480,3 @@ document.addEventListener("click", function (e) {
 
 </body>
 </html>
-<video autoplay loop muted playsinline id="bgVideo">
-    <source src="eco.mp4" type="video/mp4">
-</video>
-
-<style>
-#bgVideo {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-}
-</style>
