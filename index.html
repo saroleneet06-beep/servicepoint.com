@@ -254,10 +254,16 @@
 </div>
 
 <!-- CONTACT BOX -->
-<div class="top-contact" onclick="toggleNumber()">
+<div class="top-contact" onclick="showCompanyInfo()">
     <div>Contact Us</div>
-    <div class="contact-number" id="contactNumber">7499681291</div>
 </div>
+
+<div id="companyInfoBox"
+     style="display:none; position:fixed; top:60px; right:20px; 
+     width:260px; background:rgba(0,0,0,0.8); color:#fff; padding:15px; 
+     border-radius:10px; z-index:99999; font-size:14px;">
+</div>
+
 
 <!-- LEFT BOX TOP -->
 <div class="left-box-top">
@@ -320,7 +326,11 @@ Promise.all([
     fetch("final_data_part2.json").then(r => r.json()),
     fetch("final_data_part3.json").then(r => r.json()),
     fetch("final_data_part4.json").then(r => r.json()),
-    fetch("gangakhed.json").then(r => r.json())
+    fetch("gangakhed.json").then(r => r.json()),
+    fetch("purna_flat_clean_part1.json").then(r => r.json()),
+    fetch("purna_flat_clean_part2.json").then(r => r.json()),
+    fetch("purna_flat_clean_part3.json").then(r => r.json())
+        
     
 ])
 .then(all => {
@@ -468,7 +478,30 @@ document.addEventListener("click", function (e) {
 
         });
     }
-});
+});function showCompanyInfo() {
+    let box = document.getElementById("companyInfoBox");
+
+    if (box.style.display === "block") {
+        box.style.display = "none";
+        return;
+    }
+
+    box.style.display = "block";
+    box.innerHTML = `
+        <b>Company Name:</b> Nrs Multibizz Pvt. Ltd<br>
+        <b>Tagline:</b> Smart Digital Access for Everyone<br><br>
+
+        <b>Description:</b><br>
+        We provide fast and reliable tools to access agricultural and public data in a simple and user-friendly way.<br><br>
+
+        <b>Founded:</b> 2024<br>
+        <b>Location:</b> India<br>
+        <b>Service Type:</b> Digital Data Access & Automation Tools<br><br>
+
+        <b>Developed by:</b> sarole niteen Contact 7499681291
+    `;
+}
+
 </script>
 
 <!-- RIGHT IMAGES -->
