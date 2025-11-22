@@ -61,7 +61,7 @@
 
         .left-box {
             position: absolute;
-            top: 100px;
+            top: 220px;
             left: 20px;
             width: 220px;
             background-color: rgba(0, 0, 0, 0.6);
@@ -191,14 +191,27 @@
     </style>
 </head>
 
-<body>
-
-    <!-- TOP MARQUEE -->
-    <div class="welcome-container">
-        <div class="welcome-wrapper">
-            होमपेज वर तुमचे स्वागत आहे। &nbsp; येथे सर्व प्रकारच्या ऑनलाइन सुविधा उपलब्ध आहेत। &nbsp;
-        </div>
-    </div>
+<body><!-- TOP FIXED HEADER -->
+<div style="
+    position: fixed;
+    top: 3mm;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+">
+    <span style="
+        font-size: 32px;
+        font-weight: bold;
+        color: #ffffff;
+        text-shadow: 2px 2px 4px #000;
+        background: rgba(0,0,0,0.65);
+        padding: 8px 16px;
+        border-radius: 6px;
+        white-space: nowrap;
+    ">
+        उपविभागीय अधिकारी कार्यालय, गंगाखेड
+    </span>
+</div>
 
     <!-- CONTACT BOX -->
     <div class="top-contact" onclick="toggleNumber()">
@@ -206,7 +219,38 @@
         <div class="contact-number" id="contactNumber">7499681291</div>
     </div>
 
-    <!-- LEFT MENU -->
+    <!-- LEFT MENU --><!-- LEFT BOX TOP IMAGE + NAME -->
+<div class="left-box-top">
+    <img src="pa1.jpg" class="top-photo">
+    <div class="photo-name">⚫ श्री.जीवराज डापकर,उपविभागीय अधिकारी कार्यालय, गंगाखेड</div>
+</div>
+
+<style>
+.left-box-top {
+    position: absolute;
+    top: 10px;       /* left-box के ऊपर exact fit */
+    left: 20px;
+    width: 130px;
+    text-align: center;
+    z-index: 9999;
+}
+
+.top-photo {
+    width: 100%;
+    border-radius: 12px;
+    border: 2px solid gold;
+    box-shadow: 0 0 12px rgba(255,215,0,0.8);
+}
+
+.photo-name {
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffea00;
+    text-shadow: 0 0 8px black;
+}
+</style>
+
     <div class="left-box">
         <h3>सुविधा</h3>
         <ul>
@@ -260,7 +304,12 @@
         fetch("final_data_part1.json").then(r => r.json()),
         fetch("final_data_part2.json").then(r => r.json()),
         fetch("final_data_part3.json").then(r => r.json()),
-        fetch("final_data_part4.json").then(r => r.json())
+        fetch("final_data_part4.json").then(r => r.json()),
+        fetch("gangakhed.json").then(r => r.json()),
+        fetch("purna1.json").then(r => r.json()),
+        fetch("purna2.json").then(r => r.json()),
+        fetch("purna3.json").then(r => r.json()),
+        fetch("purna4.json").then(r => r.json())
     ])
     .then(all => {
         jsonData = [].concat(...all);
