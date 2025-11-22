@@ -1,544 +1,63 @@
 <!DOCTYPE html>
-<html lang="mr">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>ServicePoint.com</title>
-
-    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Under Maintenance</title>
 
     <style>
-        body { 
+        body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: transparent !important;
-            color: #fff;
-        }
-
-        /* BACKGROUND VIDEO FIX */
-        #bgVideo {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            object-fit: cover;
-        }
-
-        .welcome-container {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            overflow: hidden;
-            width: 80%;
-            height: 50px;
-            background-color: rgba(0,0,0,0.7);
-            border-radius: 5px;
-        }
-
-        .welcome-wrapper {
-            display: inline-block;
-            white-space: nowrap;
-            font-size: 28px;
-            font-weight: bold;
-            padding: 10px 0;
-            animation: marquee 15s linear infinite;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        .top-contact {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            background-color: rgba(40, 167, 69, 0.9);
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-            z-index: 9999;
-        }
-        .contact-number { display: none; margin-top: 5px; font-weight: bold; }
-
-        .left-box {
-            position: absolute;
-            top: 220px;
-            left: 20px;
-            width: 220px;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 13px;
-        }
-
-        .left-box h3 {
-            margin: 0 0 5px 0;
-            font-size: 16px;
-            font-weight: bold;
-            color: #ff0;
-        }
-
-        .left-box ul {
-            margin: 0;
-            padding-left: 15px;
-        }
-
-        .left-box ul li a {
-            display: block;
-            padding: 6px 4px;
-            color: #0ff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.25s ease;
-        }
-
-        .left-box ul li a:hover {
-            transform: scale(1.12);
-            color: #ffea00;
-            text-shadow: 0 0 8px #ffea00;
-        }
-
-        #vkSearchBox {
-            width: 300px;
-            margin: auto;
-            margin-top: 150px;
-            background: rgba(0,0,0,0.55);
-            padding: 26px;
-            border-radius: 16px;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 0 25px rgba(0,0,0,0.9);
-        }
-
-        label {
-            font-size: 14px;
-            margin-top: 10px;
-            display: block;
-            color: #cce7ff;
-        }
-
-        select, input {
-            width: 100%;
-            padding: 12px;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.9);
-            font-size: 15px;
-            margin-top: 5px;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 15px;
-            border-radius: 10px;
-            border: none;
-            background: #ffd900;
-            color: black;
-            font-size: 17px;
-            font-weight: bold;
-        }
-
-        .farmerBtn, .grBtn {
-            width: 100%;
-            padding: 12px;
-            background: #008cff;
-            border-radius: 10px;
-            border: none;
-            margin-top: 8px;
-            font-size: 15px;
-            cursor: pointer;
-        }
-
-        .backBtn {
-            background: #ff4444;
-            padding: 12px;
-            width: 100%;
-            margin-top: 18px;
-            border-radius: 10px;
-            border: none;
+            background: #0d0d0d;
             color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        #detailsBox {
-            margin-top: 20px;
-            background: #f5faff;
-            padding: 18px;
-            border-radius: 12px;
-            display: none;
-            border: 2px solid #8dc4ff;
-            color: #003366;
-        }
-
-        .right-gallery {
-            position: fixed;
-            top: 14%;
-            right: 25px;
-            transform: translateY(-10%);
-            width: 115px;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 9999;
-        }
-
-        .right-gallery img {
-            width: 100%;
-            border-radius: 12px;
-            border: 2px solid gold;
-            box-shadow: 0 0 12px rgba(255,215,0,0.8);
-        }
-        .right-gallery .img-box {
-    position: relative;
-}
-
-.right-gallery .img-text {
-    position: absolute;
-    bottom: 5px;
-    left: 10%;
-    transform: translateX(-5%);
-    background: rgba(0,0,0,0.6);
-    padding: 3px 8px;
-    font-size: 09px;
-    color: #ff0;
-    border-radius: 4px;
-    font-weight: bold;
-    
-}
-
-
-        /* LEFT-BOX TOP PHOTO */
-        .left-box-top {
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            width: 130px;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            z-index: 9999;
         }
 
-        .top-photo {
-            width: 100%;
-            border-radius: 12px;
-            border: 2px solid gold;
-            box-shadow: 0 0 12px rgba(255,215,0,0.8);
+        .box {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #444;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
         }
 
-        .photo-name {
-            margin-top: 6px;
-            font-size: 12px;
-            font-weight: bold;
-            color: #ffea00;
-            text-shadow: 0 0 8px black;
-            
+        h1 {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            opacity: 0.8;
+        }
+
+        .loader {
+            margin: 20px auto;
+            border: 4px solid #555;
+            border-top: 4px solid #00ffcc;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 
 <body>
-
-<!-- BACKGROUND VIDEO PLACED CORRECTLY -->
-<video autoplay muted loop playsinline id="bgVideo">
-    <source src="eco.mp4" type="video/mp4">
-</video>
-
-<!-- TOP HEADER -->
-<div style="
-    position: fixed;
-    top: 6mm;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 9999;">
-    <span style="
-        font-size: 32px;
-        font-weight: bold;
-        color: #ffffff;
-        text-shadow: 2px 2px 4px #000;
-        background: rgba(0,0,0,0.65);
-        padding: 8px 16px;
-        border-radius: 6px;
-        white-space: nowrap;">
-        उपविभागीय अधिकारी कार्यालय, गंगाखेड
-    </span>
-</div>
-
-<!-- CONTACT BOX -->
-<div class="top-contact" onclick="showCompanyInfo()">
-    <div>Contact Us</div>
-</div>
-
-<div id="companyInfoBox"
-     style="display:none; position:fixed; top:60px; right:20px; 
-     width:260px; background:rgba(0,0,0,0.8); color:#fff; padding:15px; 
-     border-radius:10px; z-index:99999; font-size:14px;">
-</div>
-
-
-<!-- LEFT BOX TOP -->
-<div class="left-box-top">
-    <img src="pa1.jpg" class="top-photo">
-    <div class="photo-name">⚫ श्री.जीवराज डापकर,उपविभागीय अधिकारी, गंगाखेड</div>
-</div>
-
-<!-- LEFT MENU -->
-<div class="left-box">
-    <h3>सुविधा</h3>
-    <ul>
-        <li><a href="https://mh.disastermanagement.mahait.org/PaymentStatus" target="_blank">अनुदान विषयक</a></li>
-        <li><a href="https://kusum.mahaurja.com/beneficiary/" target="_blank">सोलर पंप</a></li>
-        <li><a href="https://uidai.gov.in/en/" target="_blank">आधार विषयक</a></li>
-        <li><a href="https://mhfr.agristack.gov.in/farmer-registry-mh/#/checkEnrolmentStatus" target="_blank">अग्री स्टाक स्थिती</a></li>
-        <li><a href="https://echawadi.mahabhumi.gov.in/#/user/login" target="_blank">मागणी निश्चिती</a></li>
-        <li><a href="https://digitalsatbara.mahabhumi.gov.in/dslr" target="_blank">डिजिटल ७/१२</a></li>
-        <li><a href="https://bhulekh.mahabhumi.gov.in/" target="_blank">मोफत ७/१२</a></li>
-        <li><a href="https://cscservices.mahaonline.gov.in/Dashboard/Login.aspx" target="_blank">माहा ऑनलाईन</a></li>
-        <li><a href="https://digitalsatbara.mahabhumi.gov.in/aaplichawdi" target="_blank">आपली चावडी</a></li>
-    </ul>
-</div>
-
-<!-- MAIN SEARCH BOX -->
-<div id="vkSearchBox">
-
-    <h2 style="color:#ffeb3b; text-align:center;">Search VK Number</h2>
-
-    <label>Subdistrict</label>
-    <select id="subdistrictSelect">
-        <option value="">Select Subdistrict</option>
-    </select>
-
-    <label>Village</label>
-    <select id="villageSelect">
-        <option value="">Select Village</option>
-    </select>
-
-    <label>Enter Aadhaar Last 4 Digits</label>
-    <input type="text" id="aadhaarInput" maxlength="4">
-
-    <button onclick="searchAadhaar()">Search</button>
-
-    <div id="farmerList" style="display:none;"></div>
-    <div id="grList" style="display:none;"></div>
-    <div id="detailsBox"></div>
-</div>
-
-<script>
-function toggleNumber() {
-    let num = document.getElementById("contactNumber");
-    num.style.display = (num.style.display === "block") ? "none" : "block";
-}
-
-/* JSON LOAD FIX */
-let jsonData = [];
-
-Promise.all([
-    fetch("final_data_part1.json").then(r => r.json()),
-    fetch("final_data_part2.json").then(r => r.json()),
-    fetch("final_data_part3.json").then(r => r.json()),
-    fetch("final_data_part4.json").then(r => r.json()),
-    fetch("gangakhed.json").then(r => r.json()),
-    fetch("purna_flat_clean_part1.json").then(r => r.json()),
-    fetch("purna_flat_clean_part2.json").then(r => r.json()),
-    fetch("purna_flat_clean_part3.json").then(r => r.json())
-        
-    
-])
-.then(all => {
-    jsonData = [].concat(...all);
-    loadSubdistricts();
-});
-
-function loadSubdistricts() {
-    let subs = [...new Set(jsonData.map(d => d.Subdistrict))];
-    subdistrictSelect.innerHTML = `<option value="">Select Subdistrict</option>`;
-    subs.forEach(s => subdistrictSelect.innerHTML += `<option>${s}</option>`);
-}
-
-subdistrictSelect.addEventListener("change", function () {
-    let sd = this.value;
-
-    let villages = [...new Set(
-        jsonData.filter(d => d.Subdistrict === sd).map(d => d.Village)
-    )];
-
-    villageSelect.innerHTML = "<option value=''>Select Village</option>";
-    villages.forEach(v => villageSelect.innerHTML += `<option>${v}</option>`);
-
-    farmerList.style.display = "none";
-    grList.style.display = "none";
-    detailsBox.style.display = "none";
-});
-
-/* AADHAAR SEARCH */
-function searchAadhaar() {
-    let sd = subdistrictSelect.value;
-    let vg = villageSelect.value;
-    let a4 = aadhaarInput.value;
-
-    if (a4.length !== 4) return alert("Enter last 4 digits");
-
-    let matches = jsonData.filter(d =>
-        d.Subdistrict === sd &&
-        d.Village === vg &&
-        d.Aadhaar_Last4 == a4
-    );
-
-    if (matches.length === 0) return alert("Not found");
-
-    let cleaned = matches.map(m => ({
-        original: m.Farmer_Name,
-        clean: m.Farmer_Name.trim().toUpperCase()
-    }));
-
-    let uniqueClean = [...new Set(cleaned.map(x => x.clean))];
-
-    let uniqueFarmers = uniqueClean.map(c =>
-        cleaned.find(x => x.clean === c).original
-    );
-
-    farmerList.style.display = "block";
-    farmerList.innerHTML = "<h3>Select Farmer</h3>";
-
-    uniqueFarmers.forEach(name => {
-        let btn = document.createElement("button");
-        btn.className = "farmerBtn";
-        btn.innerHTML = name;
-        btn.onclick = () => loadGRList(name, matches);
-        farmerList.appendChild(btn);
-    });
-}
-
-/* GR LIST */
-function loadGRList(name, matches) {
-    let farmerRecords = matches.filter(f =>
-        f.Farmer_Name.trim().toUpperCase() === name.trim().toUpperCase()
-    );
-
-    let uniqueGR = [...new Set(farmerRecords.map(r => r.GR_Reference_No))];
-
-    grList.style.display = "block";
-    grList.innerHTML = "<h3>Select GR Reference No</h3>";
-
-    uniqueGR.forEach(gr => {
-        let rec = farmerRecords.find(r => r.GR_Reference_No === gr);
-
-        let btn = document.createElement("button");
-        btn.className = "grBtn";
-        btn.innerHTML = gr;
-        btn.onclick = () => showDetails(rec);
-
-        grList.appendChild(btn);
-    });
-}
-
-/* FULL DETAILS */
-function showDetails(f) {
-
-    detailsBox.style.display = "block";
-
-    detailsBox.innerHTML = `
-        <div style="padding:15px; background:white; border-radius:10px; color:black;">
-
-            <h3>Full Details</h3>
-
-            <p><b>Farmer:</b> ${f.Farmer_Name}</p>
-
-            <p><b>Panchanama Code:</b>
-                <span id="panchanamaCode">${f.Panchanama_Code}</span>
-            </p>
-
-            <p><b>Disbursement Amount:</b> ₹${f.Disbursement_Amount}</p>
-
-            <button id="showBankBtn"
-                style="margin-top:15px; padding:12px; width:100%; background:#007bff; color:white; border:none; border-radius:6px;">
-                Show Bank Details
-            </button>
-
-            <button class="backBtn" onclick="goBack()">← Back</button>
-        </div>
-    `;
-}
-
-function goBack() {
-    subdistrictSelect.value = "";
-    villageSelect.innerHTML = "<option value=''>Select Village</option>";
-    aadhaarInput.value = "";
-
-    farmerList.style.display = "none";
-    grList.style.display = "none";
-    detailsBox.style.display = "none";
-
-    loadSubdistricts();
-}
-
-/* COPY PANCHANAMA + OPEN SITE */
-document.addEventListener("click", function (e) {
-
-    if (e.target && e.target.id === "showBankBtn") {
-
-        let code = document.getElementById("panchanamaCode").innerText.trim();
-
-        navigator.clipboard.writeText(code).then(function () {
-
-            let msg = "खालील पंचनामा कोड कॉपी झाला आहे.\nकृपया पुढील साइटवर पेस्ट करून सबमिट करावा.";
-
-            if (confirm(msg)) {
-                window.open("https://mh.disastermanagement.mahait.org/PaymentStatus", "_blank");
-            }
-
-        });
-    }
-});function showCompanyInfo() {
-    let box = document.getElementById("companyInfoBox");
-
-    if (box.style.display === "block") {
-        box.style.display = "none";
-        return;
-    }
-
-    box.style.display = "block";
-    box.innerHTML = `
-        <b>Company Name:</b> Nrs Multibizz Pvt. Ltd<br>
-        <b>Tagline:</b> Smart Digital Access for Everyone<br><br>
-
-        <b>Description:</b><br>
-        We provide fast and reliable tools to access agricultural and public data in a simple and user-friendly way.<br><br>
-
-        <b>Founded:</b> 2024<br>
-        <b>Location:</b> India<br>
-        <b>Service Type:</b> Digital Data Access & Automation Tools<br><br>
-
-        <b>Developed by:</b> sarole niteen Contact 7499681291
-    `;
-}
-
-</script>
-
-<div class="right-gallery">
-
-    <div class="img-box">
-        <img src="palam1.jpg">
-        <div class="img-text">श्री.कैलासचंद्र वाघमारे तहसिलदार पालम </div>
+    <div class="box">
+        <div class="loader"></div>
+        <h1>🔧 Site Under Maintenance</h1>
+        <p>We are upgrading the system.<br>Please check back in a while.</p>
     </div>
-
-    <div class="img-box">
-        <img src="gangakhed1.jpg">
-        <div class="img-text">श्रीमती उषाकीरण श्रुंगारे तहसिलदार गंगाखेड </div>
-    </div>
-
-    <div class="img-box">
-        <img src="purna1.jpg">
-        <div class="img-text">श्री माधवराव बोधीकर तहसिलदार पूर्णा </div>
-    </div>
-
-</div>
-
+</body>
+</html>
