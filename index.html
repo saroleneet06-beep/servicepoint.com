@@ -16,15 +16,12 @@
             color: #fff;
         }
 
-        /* BACKGROUND VIDEO FIX */
         #bgVideo {
             position: fixed;
             top: 50%;
             left: 50%;
             min-width: 100%;
             min-height: 100%;
-            width: auto;
-            height: auto;
             transform: translate(-50%, -50%);
             z-index: -1;
             object-fit: cover;
@@ -65,9 +62,9 @@
             border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
             z-index: 9999;
         }
+
         .contact-number { display: none; margin-top: 5px; font-weight: bold; }
 
         .left-box {
@@ -180,16 +177,18 @@
             color: #003366;
         }
 
+        /* 🔥 RIGHT SIDE IMAGES – Option B logic will control position */
         .right-gallery {
             position: fixed;
-            top: 50%;
             right: 20px;
-            transform: translateY(-50%);
-            width: 100px;
+            width: 140px;
             display: flex;
             flex-direction: column;
             gap: 10px;
             z-index: 9999;
+            transition: 0.3s ease;
+            top: 55%; /* default position */
+            transform: translateY(-50%);
         }
 
         .right-gallery img {
@@ -198,25 +197,24 @@
             border: 2px solid gold;
             box-shadow: 0 0 12px rgba(255,215,0,0.8);
         }
+
         .right-gallery .img-box {
-    position: relative;
-}
+            position: relative;
+        }
 
-.right-gallery .img-text {
-    position: absolute;
-    bottom: 5px;
-    left: 10%;
-    transform: translateX(-5%);
-    background: rgba(0,0,0,0.6);
-    padding: 3px 8px;
-    font-size: 10px;
-    color: #ff0;
-    border-radius: 4px;
-    font-weight: bold;
-}
+        .right-gallery .img-text {
+            position: absolute;
+            bottom: 5px;
+            left: 10%;
+            transform: translateX(-5%);
+            background: rgba(0,0,0,0.6);
+            padding: 3px 8px;
+            font-size: 10px;
+            color: #ff0;
+            border-radius: 4px;
+            font-weight: bold;
+        }
 
-
-        /* LEFT-BOX TOP PHOTO */
         .left-box-top {
             position: absolute;
             top: 10px;
@@ -239,19 +237,16 @@
             font-weight: bold;
             color: #ffea00;
             text-shadow: 0 0 8px black;
-            
         }
     </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND VIDEO PLACED CORRECTLY -->
 <video autoplay muted loop playsinline id="bgVideo">
     <source src="eco.mp4" type="video/mp4">
 </video>
 
-<!-- TOP HEADER -->
 <div style="
     position: fixed;
     top: 6mm;
@@ -271,7 +266,6 @@
     </span>
 </div>
 
-<!-- CONTACT BOX -->
 <div class="top-contact" onclick="showCompanyInfo()">
     <div>Contact Us</div>
 </div>
@@ -282,14 +276,11 @@
      border-radius:10px; z-index:99999; font-size:14px;">
 </div>
 
-
-<!-- LEFT BOX TOP -->
 <div class="left-box-top">
     <img src="pa1.jpg" class="top-photo">
     <div class="photo-name">⚫ श्री.जीवराज डापकर,उपविभागीय अधिकारी, गंगाखेड</div>
 </div>
 
-<!-- LEFT MENU -->
 <div class="left-box">
     <h3>सुविधा</h3>
     <ul>
@@ -305,7 +296,6 @@
     </ul>
 </div>
 
-<!-- MAIN SEARCH BOX -->
 <div id="vkSearchBox">
 
     <h2 style="color:#ffeb3b; text-align:center;">Search VK Number</h2>
@@ -331,12 +321,6 @@
 </div>
 
 <script>
-function toggleNumber() {
-    let num = document.getElementById("contactNumber");
-    num.style.display = (num.style.display === "block") ? "none" : "block";
-}
-
-/* JSON LOAD FIX */
 let jsonData = [];
 
 Promise.all([
@@ -348,8 +332,6 @@ Promise.all([
     fetch("purna_flat_clean_part1.json").then(r => r.json()),
     fetch("purna_flat_clean_part2.json").then(r => r.json()),
     fetch("purna_flat_clean_part3.json").then(r => r.json())
-        
-    
 ])
 .then(all => {
     jsonData = [].concat(...all);
@@ -377,7 +359,6 @@ subdistrictSelect.addEventListener("change", function () {
     detailsBox.style.display = "none";
 });
 
-/* AADHAAR SEARCH */
 function searchAadhaar() {
     let sd = subdistrictSelect.value;
     let vg = villageSelect.value;
@@ -416,7 +397,6 @@ function searchAadhaar() {
     });
 }
 
-/* GR LIST */
 function loadGRList(name, matches) {
     let farmerRecords = matches.filter(f =>
         f.Farmer_Name.trim().toUpperCase() === name.trim().toUpperCase()
@@ -439,7 +419,6 @@ function loadGRList(name, matches) {
     });
 }
 
-/* FULL DETAILS */
 function showDetails(f) {
 
     detailsBox.style.display = "block";
@@ -479,11 +458,8 @@ function goBack() {
     loadSubdistricts();
 }
 
-/* COPY PANCHANAMA + OPEN SITE */
 document.addEventListener("click", function (e) {
-
     if (e.target && e.target.id === "showBankBtn") {
-
         let code = document.getElementById("panchanamaCode").innerText.trim();
 
         navigator.clipboard.writeText(code).then(function () {
@@ -496,32 +472,32 @@ document.addEventListener("click", function (e) {
 
         });
     }
-});function showCompanyInfo() {
+});
+
+/* 🔥 OPTION B — CONTACT BOX के हिसाब से IMAGES नीचे लाना */
+function showCompanyInfo() {
     let box = document.getElementById("companyInfoBox");
+    let gallery = document.querySelector(".right-gallery");
 
     if (box.style.display === "block") {
         box.style.display = "none";
+
+        /* 🔵 Gallery वापस original जगह */
+        gallery.style.top = "55%";
+        gallery.style.transform = "translateY(-50%)";
+
         return;
     }
 
     box.style.display = "block";
-    box.innerHTML = `
-        <b>Company Name:</b> Nrs Multibizz Pvt. Ltd<br>
-        <b>Tagline:</b> Smart Digital Access for Everyone<br><br>
 
-        <b>Description:</b><br>
-        We provide fast and reliable tools to access agricultural and public data in a simple and user-friendly way.<br><br>
-
-        <b>Founded:</b> 2024<br>
-        <b>Location:</b> India<br>
-        <b>Service Type:</b> Digital Data Access & Automation Tools<br><br>
-
-        <b>Developed by:</b> sarole niteen Contact 7499681291
-    `;
+    /* 🔵 Gallery को contact box के नीचे shift करना */
+    gallery.style.top = "350px";   /* Contact box नीचे बहुत अच्छे से fit होता */
+    gallery.style.transform = "none";
 }
-
 </script>
 
+<!-- RIGHT-SIDE IMAGES -->
 <div class="right-gallery">
 
     <div class="img-box">
@@ -541,3 +517,5 @@ document.addEventListener("click", function (e) {
 
 </div>
 
+</body>
+</html>
