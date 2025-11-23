@@ -377,7 +377,7 @@ function searchAadhaar() {
         d.Aadhaar_Last4 == a4
     );
 
-    if (matches.length === 0) return alert("Not found");
+    if (matches.length === 0) return alert("कृपया संबंधित तलाठी/तहसिल कार्यालयाशी संपर्क साधावा ");
 
     let cleaned = matches.map(m => ({
         original: m.Farmer_Name,
