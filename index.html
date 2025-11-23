@@ -12,22 +12,15 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: transparent !important;
-            color: #fff;
-        }
 
-        /* BACKGROUND VIDEO FIX */
-        #bgVideo {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            object-fit: cover;
+            /* ▶ BACKGROUND IMAGE ADDED */
+            background-image: url('eco.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+
+            color: #fff;
         }
 
         .welcome-container {
@@ -199,23 +192,21 @@
             box-shadow: 0 0 12px rgba(255,215,0,0.8);
         }
         .right-gallery .img-box {
-    position: relative;
-}
+            position: relative;
+        }
 
-.right-gallery .img-text {
-    position: absolute;
-    bottom: 5px;
-    left: 10%;
-    transform: translateX(-5%);
-    background: rgba(0,0,0,0.6);
-    padding: 3px 8px;
-    font-size: 09px;
-    color: #ff0;
-    border-radius: 4px;
-    font-weight: bold;
-    
-}
-
+        .right-gallery .img-text {
+            position: absolute;
+            bottom: 5px;
+            left: 10%;
+            transform: translateX(-5%);
+            background: rgba(0,0,0,0.6);
+            padding: 3px 8px;
+            font-size: 09px;
+            color: #ff0;
+            border-radius: 4px;
+            font-weight: bold;
+        }
 
         /* LEFT-BOX TOP PHOTO */
         .left-box-top {
@@ -240,17 +231,13 @@
             font-weight: bold;
             color: #ffea00;
             text-shadow: 0 0 8px black;
-            
         }
     </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND VIDEO PLACED CORRECTLY -->
-<video autoplay muted loop playsinline id="bgVideo">
-    <source src="eco.mp4" type="video/mp4">
-</video>
+<!-- 🔥 VIDEO REMOVED (NO MORE <video> TAG) -->
 
 <!-- TOP HEADER -->
 <div style="
@@ -349,8 +336,6 @@ Promise.all([
     fetch("purna_flat_clean_part1.json").then(r => r.json()),
     fetch("purna_flat_clean_part2.json").then(r => r.json()),
     fetch("purna_flat_clean_part3.json").then(r => r.json())
-        
-    
 ])
 .then(all => {
     jsonData = [].concat(...all);
@@ -497,7 +482,9 @@ document.addEventListener("click", function (e) {
 
         });
     }
-});function showCompanyInfo() {
+});
+
+function showCompanyInfo() {
     let box = document.getElementById("companyInfoBox");
 
     if (box.style.display === "block") {
@@ -519,10 +506,8 @@ We provide fast and reliable tools to access agricultural and public data in a s
 
 <b>Developed by:</b> sarole niteen Contact 7499681291<br>
 <b>Head of Publicity:</b> Sudip Chorghade Grammahsul Adhikari Palam
-
     `;
 }
-
 </script>
 
 <div class="right-gallery">
@@ -544,3 +529,5 @@ We provide fast and reliable tools to access agricultural and public data in a s
 
 </div>
 
+</body>
+</html>
