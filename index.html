@@ -331,10 +331,11 @@ Promise.all([
     fetch("final_data_part2.json").then(r => r.json()),
     fetch("final_data_part3.json").then(r => r.json()),
     fetch("final_data_part4.json").then(r => r.json()),
-    fetch("gangakhed.json").then(r => r.json()),
     fetch("purna_flat_clean_part1.json").then(r => r.json()),
     fetch("purna_flat_clean_part2.json").then(r => r.json()),
-    fetch("purna_flat_clean_part3.json").then(r => r.json())
+    fetch("purna_flat_clean_part3.json").then(r => r.json()),
+    fetch("ganga1.json").then(r => r.json()),
+    fetch("ganga2.json").then(r => r.json())
 ])
 .then(all => {
     jsonData = [].concat(...all);
