@@ -924,35 +924,20 @@ We provide fast and reliable tools to access agricultural and public data in a s
         <!-- ============ सोलर पंप ============ -->
         <div class="position-wrap">
 
-            <div class="g-btn g-lightblue" onclick="toggleSolar()">सोलर पंप</div>
+            <div class="g-btn g-lightblue" onclick="toggleSolar()">पीक पाहणी विषयी </div>
 
             <div class="solar-dropdown" id="solarMenu">
 
-                <div class="solar-item" onclick="openSolarPopup('Option 1')">नविन अर्ज </div>
-                <div class="solar-item" onclick="openSolarPopup('Option 2')">कंपनी निवडणे </div>
-                <div class="solar-item" onclick="openSolarPopup('Option 3')">सोलर पंप दुरुस्ती </div>
-                <div class="solar-item" onclick="openSolarPopup('Option 4')">नवीन मागणी</div>
+                <div class="solar-item" onclick="openSolarPopup('Option 1')">पीक पाहणी कशी करावी  </div>
+                <div class="solar-item" onclick="openSolarPopup('Option 2')">हेल्पलाईन नंबर  </div>
+                <div class="solar-item" onclick="openSolarPopup('Option 3')">पीक पाहणी दुरुस्ती  </div>
+                
                 <div class="solar-item" onclick="openSolarPopup('Option 5')">इतर</div>
 
                 <div class="solar-close" onclick="closeSolar()">बंद करा</div>
             </div>
 
-            <!-- SOLAR POPUP -->
-            <div id="solarPopup" class="solar-popup">
-                <div class="solar-box">
-
-                    <h3>कृपया समस्या नोंदवा</h3>
-
-                    <textarea id="solarText" placeholder="आपली समस्या येथे लिहा..."></textarea>
-
-                    <div class="solar-submit" onclick="sendSolarMsg()">Submit</div>
-
-                    <div class="solar-close2" onclick="closeSolarPopup()">बंद करा</div>
-
-                </div>
-            </div>
-
-        </div>
+            
 
         <a class="g-btn g-green" onclick="alert('Work in Progress')">इतर</a>
 
@@ -1008,18 +993,6 @@ function openSolarPopup(op) {
 
 function closeSolarPopup() {
     document.getElementById("solarPopup").style.display = "none";
-}
-
-function sendSolarMsg() {
-    let msg = document.getElementById("solarText").value;
-    let num = "91**********";   // ← आपला WhatsApp नंबर येथे टाका
-
-    if(msg.trim() === "") {
-        alert("कृपया समस्या लिहा!");
-        return;
-    }
-
-    window.open(`https://wa.me/${num}?text=${encodeURIComponent(msg)}`);
 }
 
 </script>
