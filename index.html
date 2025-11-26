@@ -663,16 +663,8 @@ We provide fast and reliable tools to access agricultural and public data in a s
     padding: 4px 6px;
     border-radius: 4px;
     font-size: 12px;
+    pointer-events: none;
 }
-.arj-download-btn {
-    background: #0c73b8;
-    color: white;
-    padding: 4px 6px;
-    border-radius: 4px;
-    font-size: 12px;
-    pointer-events: none;   /* ⭐ NEW: span क्लिक होणार नाही */
-}
-
 
 .arj-item {
     transition: all 0.3s ease;
@@ -708,6 +700,7 @@ We provide fast and reliable tools to access agricultural and public data in a s
     display: flex;
     align-items: center;
 }
+
 
 /* ================= AGRI POPUP ================= */
 .agri-popup {
@@ -763,6 +756,109 @@ We provide fast and reliable tools to access agricultural and public data in a s
     background: #222;
 }
 
+
+/* =========== SOLAR PUMP DROPDOWN ============= */
+.solar-dropdown {
+    display: none;
+    flex-direction: column;
+    background: white;
+    border: 2px solid #2a8acb;
+    margin-top: 8px;
+    border-radius: 6px;
+    padding: 8px 0;
+    width: 200px;
+    position: absolute;
+    z-index: 999;
+    top: 100%;
+    left: 0;
+}
+
+.solar-item {
+    padding: 9px 12px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.solar-item:hover {
+    background: #e7f3ff;
+    padding-left: 18px;
+}
+
+.solar-close {
+    padding: 8px;
+    background: #2a8acb;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 6px;
+    margin: 5px 10px 0 10px;
+}
+
+
+
+/* ======= SOLAR POPUP ======= */
+.solar-popup {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    z-index: 99999;
+}
+
+.solar-box {
+    background: #fff;
+    width: 280px;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+}
+
+.solar-box h3 {
+    margin-bottom: 10px;
+    color: #d10000;
+    text-align: center;
+}
+
+.solar-box textarea {
+    width: 100%;
+    height: 70px;
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+}
+
+.solar-submit {
+    width: 100%;
+    background: #2a8acb;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.solar-close2 {
+    background: #333;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+/* --- Solar Popup Text Fix --- */
+.solar-box, 
+.solar-box * {
+    color: #000 !important;
+}
+
+/* --- Solar Dropdown Text Fix --- */
+.solar-item {
+    color: #000 !important;
+}
+
+
 </style>
 
 
@@ -796,12 +892,11 @@ We provide fast and reliable tools to access agricultural and public data in a s
         </div>
 
 
-        <!-- अग्री पॉपअप बटण -->
+        <!-- अग्री पॉपअप -->
         <div class="position-wrap">
 
             <a class="g-btn g-red" onclick="openAgriPopup()">अँग्री स्टाक स्थिति</a>
 
-            <!-- Popup -->
             <div id="agriPopup" class="agri-popup">
                 <div class="agri-box">
 
@@ -823,20 +918,56 @@ We provide fast and reliable tools to access agricultural and public data in a s
 
         </div>
 
-        <a class="g-btn g-lightblue" onclick="alert('Work in Progress')">BLANK</a>
+
+
+
+        <!-- ============ सोलर पंप ============ -->
+        <div class="position-wrap">
+
+            <div class="g-btn g-lightblue" onclick="toggleSolar()">सोलर पंप</div>
+
+            <div class="solar-dropdown" id="solarMenu">
+
+                <div class="solar-item" onclick="openSolarPopup('Option 1')">नविन अर्ज </div>
+                <div class="solar-item" onclick="openSolarPopup('Option 2')">कंपनी निवडणे </div>
+                <div class="solar-item" onclick="openSolarPopup('Option 3')">सोलर पंप दुरुस्ती </div>
+                <div class="solar-item" onclick="openSolarPopup('Option 4')">नवीन मागणी</div>
+                <div class="solar-item" onclick="openSolarPopup('Option 5')">इतर</div>
+
+                <div class="solar-close" onclick="closeSolar()">बंद करा</div>
+            </div>
+
+            <!-- SOLAR POPUP -->
+            <div id="solarPopup" class="solar-popup">
+                <div class="solar-box">
+
+                    <h3>कृपया समस्या नोंदवा</h3>
+
+                    <textarea id="solarText" placeholder="आपली समस्या येथे लिहा..."></textarea>
+
+                    <div class="solar-submit" onclick="sendSolarMsg()">Submit</div>
+
+                    <div class="solar-close2" onclick="closeSolarPopup()">बंद करा</div>
+
+                </div>
+            </div>
+
+        </div>
+
         <a class="g-btn g-green" onclick="alert('Work in Progress')">BLANK</a>
 
     </div>
 </div>
 
 
-<!-- SCRIPT -->
+
 <script>
 
-/* ========== MAIN UPDATE: only one open at a time ========== */
+/* ========== Only ONE open at a time ========== */
 
 function toggleArj() {
-    closeAgriPopup();   // ⭐ नया नियम → दूसरा अपने-आप बंद
+    closeAgriPopup();
+    closeSolar();
     let menu = document.getElementById("arjMenu");
     menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
 }
@@ -846,7 +977,8 @@ function closeArj() {
 }
 
 function openAgriPopup() {
-    closeArj();  // ⭐ नया नियम → दूसरा अपने-आप बंद
+    closeArj();
+    closeSolar();
     document.getElementById("agriPopup").style.display = "block";
 }
 
@@ -854,6 +986,40 @@ function closeAgriPopup() {
     document.getElementById("agriPopup").style.display = "none";
 }
 
-</script>
 
-<!-- ================== END ================== -->
+/* ========== SOLAR PUMP ========== */
+
+function toggleSolar() {
+    closeArj();
+    closeAgriPopup();
+
+    let sm = document.getElementById("solarMenu");
+    sm.style.display = (sm.style.display === "flex") ? "none" : "flex";
+}
+
+function closeSolar() {
+    document.getElementById("solarMenu").style.display = "none";
+}
+
+function openSolarPopup(op) {
+    closeSolar();
+    document.getElementById("solarPopup").style.display = "block";
+}
+
+function closeSolarPopup() {
+    document.getElementById("solarPopup").style.display = "none";
+}
+
+function sendSolarMsg() {
+    let msg = document.getElementById("solarText").value;
+    let num = "917499681291";   // ← आपला WhatsApp नंबर येथे टाका
+
+    if(msg.trim() === "") {
+        alert("कृपया समस्या लिहा!");
+        return;
+    }
+
+    window.open(`https://wa.me/${num}?text=${encodeURIComponent(msg)}`);
+}
+
+</script>
