@@ -31,76 +31,93 @@
 
 
         #vkSearchBox {
-            width: 300px;
-            margin: auto;
-            margin-top: 190px;
-            background: rgba(0,0,0,0.55);
-            padding: 26px;
-            border-radius: 16px;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 0 25px rgba(0,0,0,0.9);
-        }
+            width: 340px;
+    margin: auto;
+    margin-top: 185px;
+    background: linear-gradient(145deg, rgba(0,60,60,0.80), rgba(0,100,100,0.75));
+    padding: 28px;
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 30px rgba(0,0,0,0.6);
+    border: 2px solid rgba(255,255,255,0.18);
+}
 
-        label {
-            font-size: 14px;
-            margin-top: 10px;
-            display: block;
-            color: #cce7ff;
-        }
+/* LABELS */
+label {
+    font-size: 14px;
+    margin-top: 10px;
+    display: block;
+    color: #e9fffe;      /* Light mint (header match) */
+    font-weight: 600;
+}
 
-        select, input {
-            width: 100%;
-            padding: 12px;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.9);
-            font-size: 15px;
-            margin-top: 5px;
-        }
+/* INPUT + SELECT */
+select, input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.95);
+    border: 2px solid #007373;  /* Theme border */
+    color: #003c3c;
+    font-size: 15px;
+    margin-top: 5px;
+}
 
-        button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 15px;
-            border-radius: 10px;
-            border: none;
-            background: #ffd900;
-            color: black;
-            font-size: 17px;
-            font-weight: bold;
-        }
+/* SEARCH BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, #ffd900, #ffea5b);
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255,217,0,0.5);
+    cursor: pointer;
+}
 
-        .farmerBtn, .grBtn {
-            width: 100%;
-            padding: 12px;
-            background: #008cff;
-            border-radius: 10px;
-            border: none;
-            margin-top: 8px;
-            font-size: 15px;
-            cursor: pointer;
-        }
+/* EXTRA BUTTONS */
+.farmerBtn, .grBtn {
+    width: 100%;
+    padding: 12px;
+    background: #007d7d;
+    border-radius: 10px;
+    border: none;
+    margin-top: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(0,90,90,0.4);
+}
 
-        .backBtn {
-            background: #ff4444;
-            padding: 12px;
-            width: 100%;
-            margin-top: 18px;
-            border-radius: 10px;
-            border: none;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
+/* BACK BUTTON */
+.backBtn {
+    background: #ff4e4e;
+    padding: 12px;
+    width: 100%;
+    margin-top: 18px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+}
 
-        #detailsBox {
-            margin-top: 20px;
-            background: #f5faff;
-            padding: 18px;
-            border-radius: 12px;
-            display: none;
-            border: 2px solid #8dc4ff;
-            color: #003366;
-        }
+/* DETAILS BOX */
+#detailsBox {
+    margin-top: 20px;
+    background: #e7ffff;
+    padding: 18px;
+    border-radius: 12px;
+    display: none;
+    border: 2px solid #009797; /* same theme border */
+    color: #003c3c;
+    font-weight: 600;
+}
 
         
     </style>
@@ -971,5 +988,127 @@ We provide fast and reliable tools to access agricultural and public data in a s
 
 function closeDetails() {
     document.getElementById("profileDetails").style.display = "none";
+}
+</script>
+<!-- ================= RIGHT SIDE SLIDER WITH ZOOM SLIDESHOW ================= -->
+
+<style>
+/* --- RIGHT SIDE FIXED BOX --- */
+.right-slider-box {
+    position: fixed;
+    top: 200px;
+    right: 20px;
+    width: 220px;
+    height: 270px;
+    overflow: hidden;
+    border-radius: 15px;
+    background: #000;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+/* --- IMAGES (RIGHT SIDE) --- */
+.slider-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: fadeSlider 20s infinite;
+    cursor: pointer;
+}
+
+.slider-img:nth-child(1){ animation-delay:0s; }
+.slider-img:nth-child(2){ animation-delay:4s; }
+.slider-img:nth-child(3){ animation-delay:8s; }
+.slider-img:nth-child(4){ animation-delay:12s; }
+.slider-img:nth-child(5){ animation-delay:16s; }
+
+/* FADE EFFECT */
+@keyframes fadeSlider {
+    0% {opacity:0;}
+    10% {opacity:1;}
+    30% {opacity:1;}
+    40% {opacity:0;}
+    100% {opacity:0;}
+}
+
+/* -------- FULLSCREEN POPUP -------- */
+#zoomPopup {
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.90);
+    justify-content:center;
+    align-items:center;
+    z-index:9999999;
+}
+
+/* POPUP IMAGE */
+#zoomImg {
+    width: 85%;
+    max-width: 700px;
+    border-radius: 15px;
+    box-shadow: 0 0 40px #000;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+</style>
+
+<!-- ===== RIGHT SIDE SLIDER ===== -->
+<div class="right-slider-box">
+    <img src="epik1.png" class="slider-img" onclick="openZoom(0)">
+    <img src="agri1.jpg" class="slider-img" onclick="openZoom(1)">
+    <img src="epik.jpg" class="slider-img" onclick="openZoom(2)">
+    <img src="epik1.png" class="slider-img" onclick="openZoom(3)">
+    <img src="agri.jpg" class="slider-img" onclick="openZoom(4)">
+</div>
+
+<!-- ===== FULLSCREEN ZOOM POPUP ===== -->
+<div id="zoomPopup" onclick="closeZoom()">
+    <img id="zoomImg">
+</div>
+
+<script>
+/* SAME ORDER of IMAGES for SLIDER + POPUP */
+let popupImages = [
+    "epik1.png",
+    "agri1.jpg",
+    "epik.jpg",
+    "epik1.png",
+    "agri.jpg"
+];
+
+let popupIndex = 0;
+let popupInterval;
+
+/* --- OPEN POPUP --- */
+function openZoom(startIndex) {
+    popupIndex = startIndex;
+    showPopupImage();
+
+    document.getElementById("zoomPopup").style.display = "flex";
+
+    popupInterval = setInterval(() => {
+        popupIndex = (popupIndex + 1) % popupImages.length;
+        showPopupImage();
+    }, 4000);
+}
+
+function showPopupImage() {
+    let zoomImg = document.getElementById("zoomImg");
+    zoomImg.style.opacity = 0;
+
+    setTimeout(() => {
+        zoomImg.src = popupImages[popupIndex];
+        zoomImg.style.opacity = 1;
+    }, 200);
+}
+
+function closeZoom() {
+    document.getElementById("zoomPopup").style.display = "none";
+    clearInterval(popupInterval);
 }
 </script>
