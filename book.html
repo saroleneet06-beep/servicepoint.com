@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<title>विहीर / बोअर नोंद अर्ज</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #0a1e0a, #001a0a);
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .main-box {
+    width: 95%;
+    max-width: 1000px;
+    background: rgba(0, 0, 0, 0.96);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0, 255, 100, 0.35);
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid #00e5ff;
+    margin-top: 20px;
+  }
+
+  .form-section {
+    flex: 2;
+    padding: 35px 40px;
+    color: white;
+  }
+
+  .info-section {
+    flex: 1;
+    min-width: 280px;
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    padding: 35px 30px;
+    color: #e8f5e9;
+    border-left: 5px solid #00e5ff;
+  }
+
+  h2 {
+    text-align: center;
+    color: #80deea;
+    font-size: 30px;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px #00bcd4;
+  }
+
+  .input-group { margin-bottom: 18px; }
+  label { display: block; margin-bottom: 6px; color: #a5d6a7; font-weight: 600; font-size: 16px; }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 14px;
+    background: #111;
+    border: 2px solid #333;
+    border-radius: 10px;
+    color: white;
+    font-size: 17px;
+    transition: all 0.3s;
+    box-sizing: border-box;
+  }
+
+  input[type="text"]:focus {
+    outline: none;
+    border-color: #00e5ff;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.5);
+  }
+
+  .btn-group { text-align: center; margin-top: 35px; }
+
+  .btn {
+    padding: 14px 35px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    color: white;
+    min-width: 150px;
+    font-weight: bold;
+  }
+  
+  .btn-preview { background: #0277bd; }
+  .btn-preview:hover { background: #039be5; }
+
+  .btn-cancel { background: #616161; }
+  .btn-cancel:hover { background: #757575; }
+
+  /* PRINT FIXED PAGES */
+  .page {
+    width: 21cm;
+    min-height: 28.2cm;         /* FIXED height */
+    background: white;
+    color: black;
+    margin: 20px auto;
+    padding: 2cm 2.1cm;
+    page-break-after: always;
+    font-size: 19px;
+    line-height: 1.70;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+
+  /* पंचनामा = Page 2 */
+  .panch-page {
+    page-break-before: always !important;
+  }
+
+  /* जाहीर प्रगटन = Page 3 */
+  .jahir-page {
+    page-break-before: always !important;
+  }
+
+  .last-page { page-break-after: avoid; }
+  .right { text-align: right; padding-right: 5cm; }
+
+  table { width: 100%; margin-top: 20px; border-collapse: collapse; }
+  td { padding: 4px 0; border-bottom: 1px dotted #999; }
+
+  @media print {
+    body * { visibility: hidden; }
+    #output, #output * { visibility: visible; }
+    #output { position: absolute; left: 0; top: 0; width: 100%; padding: 0; background: white; }
+    .main-box { display: none !important; }
+    .no-print { display: none !important; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="main-box">
+  <div class="form-section">
+    <h2>विहीर/बोअरवेल अर्ज तयार करणे</h2>
+
+    <div class="input-group"><label>दिनांक</label><input type="text" id="date"></div>
+    <div class="input-group"><label>सज्ज्जा *</label><input type="text" id="sadja"></div>
+    <div class="input-group"><label>तालुका *</label><input type="text" id="ta"></div>
+    <div class="input-group"><label>जिल्हा *</label><input type="text" id="ji"></div>
+    <div class="input-group"><label>गट क्रमांक *</label><input type="text" id="gat"></div>
+    <div class="input-group"><label>मौजे *</label><input type="text" id="mauje"></div>
+    <div class="input-group"><label>अर्जदाराचे नाव *</label><input type="text" id="name"></div>
+    <div class="input-group"><label>मोबाईल नंबर *</label><input type="text" id="mob"></div>
+
+    <div class="btn-group">
+      <button class="btn btn-preview" onclick="generate()">Preview</button>
+      <button class="btn" style="background:#17a2b8;" onclick="generate();setTimeout(window.print, 500);">Print PDF</button>
+      <button class="btn btn-cancel" onclick="location.reload()">Cancel</button>
+    </div>
+
+  </div>
+
+  <div class="info-section">
+    <h3 style="color:#80deea;text-align:center;margin-bottom:25px;font-size:22px;">सूचना</h3>
+    <ul style="line-height:2.1;font-size:16px;padding-left:15px;">
+      <li>कृपया सर्व (*) फील्ड भरा</li>
+      <li>सर्व अर्ज योग्य रित्या भरल्यानंतर आपला 7/12 वर विहीर बोअरवेल लावण्यासाठी अर्ज तयार केला जाईल </li>
+      <li>Preview नंतर प्रिंट करा</li>
+    </ul>
+  </div>
+</div>
+
+<div id="output"></div>
+
+<script>
+// ये वाला कोड सिर्फ दो काम करता है – बाकी सब तुम्हारा ही है
+function validateAndGenerate() {
+  const required = ['sadja','ta','ji','gat','mauje','name','mob'];
+  for (let id of required) {
+    if (document.getElementById(id).value.trim() === '') {
+      alert('कृपया ' + document.querySelector(`label[for=${id}]`).innerText + ' भरा');
+      return false;
+    }
+  }
+  generate();
+  return true;
+}
+
+function generate() {
+  const dt = document.getElementById('date').value || new Date().toLocaleDateString('en-GB').replace(/\//g, '/');
+  const sd = document.getElementById('sadja').value;
+  const ta = document.getElementById('ta').value;
+  const ji = document.getElementById('ji').value;
+  const gat = document.getElementById('gat').value;
+  const mau = document.getElementById('mauje').value;
+  const nm = document.getElementById('name').value;
+  const mb = document.getElementById('mob').value;
+
+  document.querySelector('.main-box').style.display = 'none';
+
+  document.getElementById('output').innerHTML = `
+
+<div class="page">
+  <div style="text-align:right; font-weight:bold; margin-bottom:15px;">
+    दि :- ${dt}
+  </div>
+  <h2 style="text-align:center; color:black;"> विहीर / बोअर ची नोंद घेण्यासाठीचा अर्ज</h2>
+  प्रती,<br>
+       मा.ग्राममहसूल अधिकारी,<br>
+       ग्राममहसूल अधिकारी सज्जा <br>
+       ता.${ta} जि.${ji}<br><br>
+                    विषय :- विहीर / बोअरवेल चो नोंद घेणे बाबत.<br><br>
+  महोदय,<br>
+         वरील विषयी विनंतीपूर्वक अर्ज सादर करण्यात येतो कि, मी माझ्या मालकीच्या गट क्र.${gat} मौजे ${mau} ता.${ta} जि.${ji} मध्ये विहीर/बोअरवेल पाडली आहे. सदर विहिरीची / बोअरवेलची मालकी स्वतंत्र/सामाईक आहे.<br><br>
+
+  त्याची चतु:सिमा खालील प्रमाणे दिलेली आहे.<br>
+         पूर्वेस   :- .......................................................................<br>
+         पश्चिम   :- ......................................................................<br>
+         दक्षिणेस  :-......................................................................<br>
+          उत्तरेस     :-.......................................................................<br><br>
+
+  वरील प्रमाणे दर्शविलेल्या चतु:सिमेमध्ये मी विहीर / बोअरवेल पाडली आहे. त्याची नोंद 7/12 उताऱ्यावर घेण्यात यावी. सदर विहीर / बोअरवेल शासकीय योजनेतून / स्वखर्चातून पाडली आहे.<br><br>
+
+  वरील माहिती खोटी आढळून आल्यास मी स्वतः जबाबदार राहील.<br><br><br>
+
+  <div style="text-align:right; font-weight:bold; margin-bottom:20px;">
+     अर्जदार <br>
+     नाव :- ${nm}<br>
+     मो. क्र :- ${mb}
+  </div>
+</div>
+
+<!-- PAGE 2 — PANCHANAMA -->
+<div class="page panch-page">
+  <p style="text-align:center; font-weight:bold; font-size:28px;">पंचनामा</p><br>
+
+  आम्ही खालील सह्या करणारे लोक रा.${mau} ता.${ta} जि.${ji} येथील असुन ग्राममहसूल अधिकारी सज्जा ${sd} यांनी बोलण्यावरून ग्राममहसूल अधिकारी कार्यालय/ग्रामपंचायत कार्यालयामध्ये उपस्थित झालो. त्यांनी आमचे सक्षम वारसा/खरेदी/वाटणी व इतर फेर क्र.............. बाबत जाहीर नोटीस यमुना नं. 09 मध्ये लिहलेल्या मजकूर वाचून दाखविला व त्यांची एक प्रत ग्राममहसूल अधिकारी कार्यालय/ग्रामपंचायत कार्यालय............................च्या नोटीस बोर्डावर प्रसिद्ध केला असून त्याची जाहीर प्रसिद्धी दिल्या बाबतच्या आम्ही पंचांचा पंचनामा लिहून दिला. पंचनामा आम्ही त्यावर सह्या/अंगठा केला.<br><br>
+
+  दि. ${dt}<br><br>
+
+  <table>
+    <tr><td>अ.क्र.</td><td>पंचांचे नाव</td><td>सही</td></tr>
+    <tr><td>1.</td><td>................................................</td><td>....................</td></tr>
+    <tr><td>2.</td><td>................................................</td><td>....................</td></tr>
+    <tr><td>3.</td><td>................................................</td><td>....................</td></tr>
+    <tr><td>4.</td><td>................................................</td><td>....................</td></tr>
+    <tr><td>5.</td><td>................................................</td><td>....................</td></tr>
+  </table>
+
+  <br><br><br>
+  <div class="right">ग्राममहसूल अधिकारी</div>
+</div>
+
+<!-- PAGE 3 — JAHIR PRAGATANA -->
+<div class="page jahir-page last-page">
+  <p style="text-align:center; font-weight:bold; font-size:28px;">जाहीर प्रगटन</p><br><br>
+
+  मौजे ${mau} ता.${ta} जि.${ji} यांना जाहीर प्रगटनाद्वारे कळविण्यात येते कि, ${nm} यांनी दि. ${dt} रोजी अर्ज देऊन कळविले कि, त्यांनी गट क्र.${gat} मौजे ${mau} ता.${ta} जि.${ji} मध्ये विहीर/बोअरवेल शासकीय/खाजगी योजनेतून खोदली/पाडली आहे. त्या विहिरीवर बोअरवेलवर मालकी खालील प्रमाणे आहे.<br><br>
+
+  1) ............................................................<br>
+  2) ............................................................<br>
+  3) ............................................................<br><br>
+
+  वरील प्रमाणे मालक आहेत. त्याची फेरफारला नोंद घेण्यात आली असून त्याचा क्र.${gat} हा आहे. सदर फेरफार क्रमांकावर ................. कोणाचा आक्षेप अथवा उजर असल्यास जाहीर प्रगटनाच्या प्रसिद्धी तारखेपासून 15 दिवसाच्या आत ग्राममहसूल अधिकारी सज्जा ${sd} यांचाकडे लेखी स्वरुपात कळवावे. मुदतीच्या आत आक्षेप न आल्यास कोणाचे काही म्हणणे नाही, असे गृहीत धरून फे.क्र. .............. नोंद निकाली काढण्यात येईल. मुदती नंतर आलेल्या आक्षेप अर्जाचा विचार केला जाणार नाही. याची संबंधितांनी नोंद घ्यावी.<br><br>
+
+  दि. ${dt}<br><br>
+
+  पंचाच्या सह्या <br>
+  1) ………………………………………..<br>
+  2) ………………………………………….                                                      <div class="right">ग्राममहसूल अधिकारी</div>
+  3) ………………………………………….<br>
+  4) ………………………………………….<br>
+  5) …………………………………………..
+</div>
+
+<center class="no-print" style="margin:60px 0;">
+  <button style="padding:16px 50px;font-size:20px;background:#2e7d32;color:white;border:none;border-radius:10px;cursor:pointer;" onclick="window.print()">प्रिंट करा</button>
+  <button style="padding:16px 50px;font-size:20px;background:#c62828;color:white;border:none;border-radius:10px;cursor:pointer;" onclick="location.reload()">नवीन अर्ज भरा</button>
+</center>
+
+  `;
+}
+
+// Preview बटन पर वैलिडेशन
+document.querySelector('.btn-preview').onclick = validateAndGenerate;
+
+// Print बटन पर भी वैलिडेशन (पहले चेक करेगा फिर प्रिंट)
+document.querySelector('[style*="background:#17a2b8"]').onclick = function() {
+  if (validateAndGenerate()) {
+    setTimeout(window.print, 500);
+  }
+};
+
+// सभी इनपुट में गलत सिंबल ब्लॉक करो
+document.querySelectorAll('input[type="text"]').forEach(input => {
+  input.addEventListener('keydown', function(e) {
+    if (',[.;\'-=<>:"_+*]'.includes(e.key)) {
+      e.preventDefault();
+    }
+  });
+  input.addEventListener('paste', function(e) {
+    let paste = (e.clipboardData || window.clipboardData).getData('text');
+    if (/[.,;'=\-<>\":_+*]/.test(paste)) {
+      e.preventDefault();
+      alert('विशेष चिन्हे वापरू नका');
+    }
+  });
+});
+</script>
+
+</body>
+</html>

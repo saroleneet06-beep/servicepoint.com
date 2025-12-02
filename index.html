@@ -504,7 +504,8 @@ button.submit-btn:hover {
 
         <div class="seva-list">
             <div class="seva-item" id="pdeBtn">PDE अर्ज प्रणाली</div>
-            <div class="seva-item">सर्व प्रकारचे अर्ज/फोर्म </div>
+            <div class="seva-item" id="allFormsBtn">सर्व प्रकारचे अर्ज/फोर्म</div>
+
             <div class="seva-item">इ-पिक पाहणी विषयी </div>
             <!-- ===================== AGRI STACK STATUS OPTION ===================== -->
 <div class="seva-item" id="agriBtn" onclick="openAgriPopup()">
@@ -1111,4 +1112,131 @@ function closeZoom() {
     document.getElementById("zoomPopup").style.display = "none";
     clearInterval(popupInterval);
 }
+</script>
+<!-- =================== ALL FORMS SUBMENU (10 OPTIONS) =================== -->
+
+<style>
+    /* Right side submenu box */
+    #allFormsMenu {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 300px;
+        width: 260px;
+        padding: 12px;
+        background: #ffffff;
+        border-radius: 6px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+        z-index: 999999;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* Items */
+    #allFormsMenu .submenu-item {
+        padding: 10px;
+        background: #ffffff;
+        border-radius: 4px;
+        margin-top: 8px;
+        font-size: 16px;
+        color: #333;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    #allFormsMenu .submenu-item:hover {
+        background: #f2f2f2;
+        transform: translateX(4px);
+    }
+</style>
+
+<!-- Submenu HTML -->
+<div id="allFormsMenu">
+    <!-- ==== REPLACE THIS BLOCK INSTEAD OF <div class="submenu-item">निवेदन अर्ज</div> ==== -->
+
+<style>
+.submenu-line {
+    display: flex;
+    justify-content: space-between; /* टेक्स्ट left, बटन right */
+    align-items: center;
+    padding: 10px 12px;
+    background: #ffffff;       /* तुम्हारी dropdown वाली patti जैसा */
+    border-bottom: 1px solid #e4e4e4;
+    cursor: pointer;
+}
+
+/* टेक्स्ट */
+.submenu-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+}
+
+/* हरा बटन */
+.submenu-btn {
+    background: #28a745;
+    color: #fff;
+    margin-top: 2px;
+    border: none;
+    padding: 2px 6px;
+    font-size: 14px;
+    font-weight: 300;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.submenu-btn:hover {
+    opacity: 0.85;
+}
+</style>
+
+
+<div class="submenu-line">
+    <div class="submenu-text">विहीर/बोअरवेल</div>
+    <button class="submenu-btn" id="openArjBtn">अर्ज भरा</button>
+
+</div>
+
+    <div class="submenu-item">ग्राम नमुना ८ अ अर्ज</div>
+    <div class="submenu-item">वारस प्रमाणपत्र अर्ज</div>
+    <div class="submenu-item">जातीचे प्रमाणपत्र अर्ज</div>
+    <div class="submenu-item">शासकीय हमी अर्ज</div>
+    <div class="submenu-item">नामांतरण अर्ज</div>
+    <div class="submenu-item">पाणी पुरवठा अर्ज</div>
+    <div class="submenu-item">जमाबंदी अर्ज</div>
+    <div class="submenu-item">कर (Tax) अर्ज</div>
+    <div class="submenu-item">इतर सर्व प्रकारचे अर्ज</div>
+</div>
+
+<!-- ========== JS FOR OPEN / CLOSE SUBMENU ========== -->
+<script>
+    const allFormsBtn = document.getElementById("allFormsBtn");
+    const allFormsMenu = document.getElementById("allFormsMenu");
+
+    allFormsBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        // Close PDE menu if open (your existing menu)
+        if (typeof pdeMenu !== "undefined") {
+            pdeMenu.style.display = "none";
+        }
+
+        // Toggle open/close
+        allFormsMenu.style.display =
+            allFormsMenu.style.display === "block" ? "none" : "block";
+
+        // Position near button
+        const rect = allFormsBtn.getBoundingClientRect();
+        allFormsMenu.style.top = rect.top + window.scrollY + "px";
+        allFormsMenu.style.left = rect.right + 10 + window.scrollX + "px";
+    });
+
+    // Outside click = close submenu
+    document.addEventListener("click", () => {
+        allFormsMenu.style.display = "none";
+    });
+</script>
+<script>
+document.getElementById("openArjBtn").addEventListener("click", function(){
+    window.open("book.html", "_blank");
+});
 </script>
