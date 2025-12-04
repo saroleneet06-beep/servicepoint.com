@@ -505,6 +505,7 @@ button.submit-btn:hover {
         <div class="seva-list">
             <div class="seva-item" id="pdeBtn">PDE अर्ज प्रणाली</div>
             <div class="seva-item" id="allFormsBtn">सर्व प्रकारचे अर्ज/फोर्म</div>
+            
 
             <div class="seva-item">इ-पिक पाहणी विषयी </div>
             <!-- ===================== AGRI STACK STATUS OPTION ===================== -->
@@ -599,6 +600,7 @@ function goToAgriLink() {
     <div class="submenu-item">७/१२ वर बोजा नोंद कमी करणे </div>
     <div class="submenu-item">७/१२ वर बोजा नोंद करणे </div>
     <div class="submenu-item">७/१२ वर वारस फेरफार </div>
+    <div class="submenu-item">७/१२ क्षेत्र दुरुस्ती  </div>
 </div>
 
 
@@ -1156,55 +1158,151 @@ function closeZoom() {
 <style>
 .submenu-line {
     display: flex;
-    justify-content: space-between; /* टेक्स्ट left, बटन right */
+    justify-content: space-between;
     align-items: center;
     padding: 10px 12px;
-    background: #ffffff;       /* तुम्हारी dropdown वाली patti जैसा */
+    background: #ffffff;
     border-bottom: 1px solid #e4e4e4;
-    cursor: pointer;
 }
 
-/* टेक्स्ट */
+.submenu-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
 .submenu-text {
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 500;
     color: #000;
+    flex: 1;                 /* Text ko automatic space milega */
+    white-space: nowrap;     /* Text wrap nahi hoga */
 }
 
-/* हरा बटन */
+
+/* BUTTON – SAME SIZE ALWAYS */
 .submenu-btn {
-    background: #28a745;
-    color: #fff;
-    margin-top: 2px;
+    width: 110px;            /* FIXED button width */
+    background: #629658;
+    color: #000;
     border: none;
-    padding: 2px 6px;
+    padding: 6px 0;
     font-size: 14px;
-    font-weight: 300;
+    font-weight: 600;
     border-radius: 6px;
     cursor: pointer;
+    text-align: center;
 }
 
 .submenu-btn:hover {
     opacity: 0.85;
 }
+
+/* ROW (TEXT + BUTTON) */
+.submenu-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;               /* safe space */
+    width: 100%;             /* FULL fit */
+    box-sizing: border-box;
+    padding-right: 5px;      /* Button right side safe */
+}
+
+/* FULL WHITE BOX WIDTH FIX */
+.submenu-container {
+    width: 260px;            /* बिल्कुल perfect width */
+    max-width: 260px;
+}
+</style>
+
+<!-- Row 1 -->
+<div class="submenu-line">
+    <div class="submenu-text">विहीर/बोअरवेल अर्ज</div>
+    <button class="submenu-btn" id="openArjBtn">अर्ज भरा</button>
+</div>
+
+<!-- Row 2 -->
+<div class="submenu-line">
+    <div class="submenu-text">वारस शपथपत्र</div>
+    <button class="submenu-btn" id="openArj">अर्ज भरा</button>
+</div>
+
+
+    <style>
+    .submenu-item-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgb(255, 255, 255); /* हल्का सफेद background */
+        padding: 10px 14px;
+        border-radius: 6px;
+        margin-bottom: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #1c1c1c; /* Dark text */
+    }
+
+    .download-btn {
+        background: #ffca28;
+        padding: 5px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: black;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .download-btn:hover {
+        background: #f4b400;
+    }
 </style>
 
 
-<div class="submenu-line">
-    <div class="submenu-text">विहीर/बोअरवेल</div>
-    <button class="submenu-btn" id="openArjBtn">अर्ज भरा</button>
+<div class="submenu-list">
 
-</div>
+    <div class="submenu-item-row">
+        <span>विहीर/बोअरवेल अर्ज </span>
+        <a href="pdfs/boarvel.pdf" download class="download-btn">Download</a>
+    </div>
 
-    <div class="submenu-item">ग्राम नमुना ८ अ अर्ज</div>
-    <div class="submenu-item">वारस प्रमाणपत्र अर्ज</div>
-    <div class="submenu-item">जातीचे प्रमाणपत्र अर्ज</div>
-    <div class="submenu-item">शासकीय हमी अर्ज</div>
-    <div class="submenu-item">नामांतरण अर्ज</div>
-    <div class="submenu-item">पाणी पुरवठा अर्ज</div>
-    <div class="submenu-item">जमाबंदी अर्ज</div>
-    <div class="submenu-item">कर (Tax) अर्ज</div>
-    <div class="submenu-item">इतर सर्व प्रकारचे अर्ज</div>
+    <div class="submenu-item-row">
+        <span>वारस फेरफार अर्ज </span>
+        <a href="pdfs/jatipramaan.pdf" download class="download-btn">Download</a>
+    </div>
+
+    <div class="submenu-item-row">
+        <span>7/12 नाव दुरुस्ती अर्ज </span>
+        <a href="pdfs/naav durusti.pdf" download class="download-btn">Download</a>
+    </div>
+
+    <div class="submenu-item-row">
+        <span>सामाईक सहमती पत्र,पीकविमा</span>
+        <a href="pdfs/samaik sahmati vima.pdf" download class="download-btn">Download</a>
+    </div>
+
+    <div class="submenu-item-row">
+        <span>पीक पेरा अर्ज </span>
+        <a href="pdfs/pikpera.pdf" download class="download-btn">Download</a>
+    </div>
+
+    <div class="submenu-item-row">
+        <span>जमाबंदी अर्ज</span>
+        <a href="pdfs/jamabandi.pdf" download class="download-btn">Download</a>
+    </div>
+
+    <div class="submenu-item-row">
+        <span>कर (Tax) अर्ज</span>
+        <a href="pdfs/tax.pdf" download class="download-btn">Download</a>
+    </div>
+
+    <div class="submenu-item-row">
+        <span>इतर सर्व प्रकारचे अर्ज</span>
+        <a href="pdfs/other.pdf" download class="download-btn">Download</a>
+    </div>
+
 </div>
 
 <!-- ========== JS FOR OPEN / CLOSE SUBMENU ========== -->
@@ -1238,5 +1336,37 @@ function closeZoom() {
 <script>
 document.getElementById("openArjBtn").addEventListener("click", function(){
     window.open("book.html", "_blank");
+});
+document.getElementById("openArj").addEventListener("click", function(){
+    window.open("varas.html", "_blank");
+});
+</script>
+<style>
+#newSticker {
+    display: inline-block;
+    margin-left: 30px;
+    padding: 3px 5px;
+    background: linear-gradient(45deg, #ff004c, #ff7b00);
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 12px;
+    animation: blink 0.5s infinite alternate;
+}
+@keyframes blink {
+    from { opacity: 1; }
+    to   { opacity: 0.3; }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const target = document.getElementById("allFormsBtn");
+
+    const tag = document.createElement("span");
+    tag.id = "newSticker";
+    tag.innerText = "NEW";
+
+    target.appendChild(tag);
 });
 </script>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<title>वारस शपथपत्र अर्ज</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    padding:20px;
+    background:linear-gradient(135deg,#0a1e0a,#001a0a);
+    font-family:'Noto Sans Devanagari',sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+}
+
+/* SAME DESIGN */
+.main-box{
+    width:95%;max-width:1100px;
+    background:rgba(0,0,0,0.96);
+    border-radius:16px;
+    overflow:hidden;
+    display:flex;
+    border:2px solid #00e5ff;
+    box-shadow:0 0 40px rgba(0,255,200,0.35);
+}
+.title-center{
+    text-align:center;
+    font-size:34px;
+    font-weight:bold;
+    margin-bottom:25px;
+}
+.slight-right{
+    text-align:center;
+    margin-left:150px;  /* किती उजवीकडे हवं ते इथे बदलू शकतो */
+}
+.form-section{
+    flex:2;
+    padding:35px;
+    color:white;
+}
+.info-section{
+    flex:1;
+    background:linear-gradient(135deg,#1b5e20,#2e7d32);
+    padding:35px;
+    border-left:4px solid #00e5ff;
+    color:white;
+    min-width:260px;
+}
+
+h2{
+    text-align:center;
+    color:#80deea;
+    margin-bottom:25px;
+    font-size:28px;
+}
+
+label{color:#a5d6a7;font-weight:bold;}
+
+input[type="text"]{
+    width:100%;
+    padding:12px;
+    background:#111;
+    border:2px solid #333;
+    color:white;
+    border-radius:10px;
+    font-size:17px;
+    margin-bottom:12px;
+}
+input[type="text"]:focus{
+    border-color:#00e5ff;
+    box-shadow:0 0 10px #00e5ff;
+}
+
+.btn{
+    padding:14px 30px;
+    border-radius:10px;
+    font-size:18px;
+    border:none;
+    cursor:pointer;
+    color:white;
+    margin:10px;
+}
+.btn-preview{background:#0277bd;}
+.btn-print{background:#17a2b8;}
+.btn-cancel{background:#616161;}
+.btn-new{background:#2e7d32;}
+
+#output{
+    width:21cm;
+    margin:0 auto;
+    display:none;
+}
+
+.page{
+    width:21cm;
+    min-height:29.7cm;
+    background:white;
+    font-size:20px;
+    line-height:1.75;
+    padding:2cm;
+    box-sizing:border-box;
+}
+
+.last-page{page-break-after:avoid!important;}
+.output-buttons{text-align:center;margin:40px 0;}
+
+@media print{
+    body *{visibility:hidden;}
+    #output,#output *{visibility:visible;}
+    #output{position:absolute;top:0;left:0;}
+    .output-buttons{display:none!important;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- FORM START -->
+<div class="main-box" id="formBox">
+
+<div class="form-section">
+
+<h2>वारस शपथपत्र अर्ज</h2>
+
+<label>अर्जदाराचे नाव *</label>
+<input type="text" id="applicant">
+
+<label>वय *</label>
+<input type="text" id="age">
+
+<label>राहणार *</label>
+<input type="text" id="address">
+
+<label>तालुका *</label>
+<input type="text" id="taluka">
+
+<label>जिल्हा *</label>
+<input type="text" id="jilha">
+
+<label>मयत व्यक्तीचे नाव *</label>
+<input type="text" id="deadname">
+
+<label>मृत्यू दिनांक *</label>
+<input type="text" id="deathdate">
+
+<label>शिवार / मौजे *</label>
+<input type="text" id="shivar">
+
+<label>तालुका (शिवार) *</label>
+<input type="text" id="taluka2">
+
+<label>शेत गट / सर्वे नंबर *</label>
+<input type="text" id="gatno">
+
+<h3 style="color:#80deea;margin-top:25px;">वारसांची यादी (८ पर्यंत)</h3>
+
+<div id="heirsBox">
+<script>
+for(let i=1;i<=8;i++){
+document.write(`
+<b>वारस क्रमांक ${i}</b><br>
+<label>नाव</label>
+<input type="text" id="hname${i}">
+<label>वय</label>
+<input type="text" id="hage${i}">
+<label>नाते</label>
+<input type="text" id="hnate${i}">
+<label>राहणार</label>
+<input type="text" id="haddr${i}"><br>
+`);
+}
+</script>
+</div>
+
+<div style="text-align:center;margin-top:25px;">
+<button class="btn btn-preview" onclick="generate()">Preview</button>
+<button class="btn btn-print" onclick="generate();setTimeout(()=>window.print(),350)">Print</button>
+<button class="btn btn-cancel" onclick="location.reload()">Cancel</button>
+</div>
+
+</div>
+
+<div class="info-section">
+<h3 style="text-align:center;font-size:22px;">सूचना</h3>
+<ul style="line-height:2;">
+<li>कृपया सर्व माहिती बरोबर भरा</li>
+<li>एखादा रकाना रिकामा ठेवण्यासाठी कृपया - चा वापर करावा </li>
+<li>सर माहिती भरल्या नंतर वारस फेरफार लावणे शपथपत्र तयार केले जाईल </li>
+<li>सर्व माहिती योग्य भरल्या नंतर Preview बघा व नंतर Print करा</li>
+</ul>
+</div>
+
+</div>
+
+<!-- OUTPUT -->
+<div id="output"></div>
+
+<script>
+function generate(){
+
+let app=document.getElementById("applicant").value;
+let age=document.getElementById("age").value;
+let add=document.getElementById("address").value;
+let tal=document.getElementById("taluka").value;
+let jil=document.getElementById("jilha").value;
+
+let dead=document.getElementById("deadname").value;
+let ddate=document.getElementById("deathdate").value;
+
+let shivar=document.getElementById("shivar").value;
+let tal2=document.getElementById("taluka2").value;
+let gat=document.getElementById("gatno").value;
+
+if(!app||!age||!add||!tal||!jil||!dead||!ddate||!shivar||!tal2||!gat){
+    alert("कृपया सर्व * फील्ड भरा");
+    return;
+}
+
+let heirs = "";
+for(let i=1;i<=8;i++){
+    let n=document.getElementById("hname"+i).value;
+    let a=document.getElementById("hage"+i).value;
+    let nt=document.getElementById("hnate"+i).value;
+    let r=document.getElementById("haddr"+i).value;
+
+    if(n||a||nt||r){
+        heirs += `
+<tr>
+<td>${i}</td>
+<td>${n}</td>
+<td>${a}</td>
+<td>${nt}</td>
+<td>${r}</td>
+</tr>
+`;
+    }
+}
+
+document.getElementById("formBox").style.display="none";
+document.getElementById("output").style.display="block";
+
+document.getElementById("output").innerHTML = `
+
+<div class="page">
+
+<div class="title-center">वारस शपथपत्र</div>
+
+मी <b>${app}</b>, वय <b>${age}</b> वर्षे, राहणार <b>${add}</b>, तालुका <b>${tal}</b>, जिल्हा <b>${jil}</b> येथील रहिवाशी असून खालील प्रमाणे शपथपूर्वक माहीती देते की—  
+<br><br>
+
+माझे पती / वडील / आई <b>${dead}</b> यांचे दिनांक <b>${ddate}</b> रोजी निधन झाले असून खालील व्यक्ती त्यांचे कायदेशीर वारस आहेत :  
+<br><br>
+
+<table border="1" cellpadding="10" cellspacing="0" width="100%">
+<tr>
+<th>अ.क्र.</th><th>वारसाचे नाव</th><th>वय</th><th>नाते</th><th>राहणार</th>
+</tr>
+${heirs}
+</table>
+
+</div>
+
+<div class="page last-page">
+
+करिता <b>${dead}</b> यांना वरील व्यतिरिक्त इतर कोणताही वारस नाही.  
+<br><br>
+
+<b>${dead}</b> यांच्या नावाने शिवार / मौजे <b>${shivar}</b>, तालुका <b>${tal2}</b> येथील ग्रामपंचायत हद्दीत शेत गट / सर्वे नंबर <b>${gat}</b> मध्ये शेतजमीन आहे.  
+<br><br>
+
+वरील मिळकतीवर आम्ही कायदेशीर वारस असल्यामुळे हे शपथपत्र लिहून देत आहे.  
+<br><br>
+
+सदरील शपथपत्राच्या आधारे सातबारा उताऱ्यावर आमच्या नावे वारसा नोंद करण्यात यावी.  
+<br><br>
+
+वर नमूद केलेली सर्व माहिती खरी असून खोटी निघाल्यास भारतीय दंड संहिता 1860 चे कलम 193(2), 199 व 200 नुसार होणाऱ्या कारवाईस मी पात्र राहीन.  
+<br><br><br>
+
+<br><div class="slight-right">अर्जदार</div>
+<div class="slight-right">${app}</div>
+<div class="slight-right"><b>पत्ता :</b> ${add}, तालुका ${tal}, जिल्हा ${jil}</div>
+
+
+</div>
+
+<div class="output-buttons">
+<button class="btn btn-print" onclick="window.print()">Print</button>
+<button class="btn btn-new" onclick="location.reload()">New Form</button>
+</div>
+`;
+
+}
+</script>
+
+</body>
+</html>
