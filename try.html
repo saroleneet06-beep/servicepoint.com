@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<title>Anudan Sahay Kendra</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Segoe UI,Arial;
+  background:#f1f5f9;
+}
+#anudanMain{display:flex;min-height:100vh;}
+#anudanLeft{width:70%;padding:18px 18px 18px 0;}
+.anudan-headline{
+  background:#0f766e;color:#fff;
+  padding:18px 20px;font-size:22px;font-weight:600;
+}
+#anudanContent{display:flex;gap:14px;margin-top:14px;}
+
+#anudanQuestionPanel{
+  width:40%;background:#fff;border-radius:10px;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+  height:480px;display:flex;flex-direction:column;
+}
+.anudan-left-title{
+  background:#134e4a;color:#fff;
+  padding:16px;font-weight:600;font-size:16px;
+}
+#anudanQuestionList{overflow-y:auto;flex:1;}
+.anudan-question{
+  padding:16px 18px;border-bottom:1px solid #eee;
+  cursor:pointer;font-size:16px;
+}
+.anudan-question:hover{background:#f0fdfa;}
+
+#anudanChatBox{
+  width:60%;height:480px;background:#fff;
+  border-radius:10px;box-shadow:0 10px 25px rgba(0,0,0,.2);
+  display:flex;flex-direction:column;
+}
+.anudan-chat-header{
+  background:#0f766e;color:#fff;
+  padding:16px;font-size:17px;font-weight:600;
+}
+.anudan-chat-body{
+  flex:1;padding:20px;background:#f8fafc;
+  overflow-y:auto;font-size:17px;line-height:1.7;
+}
+.anudan-chat-footer{
+  display:flex;gap:10px;padding:14px;border-top:1px solid #e5e7eb;
+}
+.anudan-chat-footer input{
+  flex:1;padding:12px;font-size:15px;
+}
+.anudan-chat-footer button{
+  background:#0f766e;color:#fff;border:none;
+  padding:12px 20px;border-radius:6px;
+}
+
+#anudanRight{
+  width:30%;
+  background:linear-gradient(180deg,#0f766e,#064e3b);
+  color:#fff;
+  padding:30px 22px;
+}
+.anudan-profile{text-align:center;margin-bottom:25px;}
+.anudan-profile img{
+  width:110px;height:110px;border-radius:50%;
+  border:4px solid rgba(255,255,255,.4);
+}
+.anudan-info-box{
+  background:rgba(255,255,255,.14);
+  border-radius:14px;
+  padding:18px;margin-bottom:16px;
+}
+.anudan-tip{
+  margin-top:20px;padding:16px;border-radius:12px;
+  background:#ecfeff;color:#064e3b;font-size:14px;
+}
+</style>
+</head>
+
+<body>
+<div id="anudanMain">
+
+<div id="anudanLeft">
+<div class="anudan-headline">🌾 शासकीय अनुदान सहाय्य केंद्र</div>
+
+<div id="anudanContent">
+
+<div id="anudanQuestionPanel">
+<div class="anudan-left-title">कृपया प्रश्न निवडा</div>
+<div id="anudanQuestionList">
+
+<div class="anudan-question" onclick="selectQ(1,this)">अनुदान KYC पेंडिंग आहे काय करावे ?</div>
+<div class="anudan-question" onclick="selectQ(2,this)">अनुदान VK नंबर कसा मिळवावा ?</div>
+<div class="anudan-question" onclick="selectQ(3,this)">जमीन सामाईक आहे काय करावे ?</div>
+<div class="anudan-question" onclick="selectQ(4,this)">अनुदान मध्ये GR मर्यादा पेक्षा जास्त क्षेत्र वाढ झाली आहे ?</div>
+<div class="anudan-question" onclick="selectQ(5,this)">एकाच गावामध्ये अनेक होल्डिंग  खाते तयार झाले असेल तर ?</div>
+<div class="anudan-question" onclick="selectQ(6,this)">अग्री स्टाक नोंदणी केली नसेल तर ?</div>
+<div class="anudan-question" onclick="selectQ(7,this)">आधार बँकेशी लिंक नसेल तर?</div>
+<div class="anudan-question" onclick="selectQ(8,this)">जमीन खातेदार मयत असेल तर ?</div>
+<div class="anudan-question" onclick="selectQ(9,this)">VK नंबर तयार झाला पण खातेदार मयत आहे ?</div>
+<div class="anudan-question" onclick="selectQ(10,this)">Payment Succesfull पण अनुदान जमा झाले नाही.?</div>
+<div class="anudan-question" onclick="selectQ(11,this)">Status Aadhaar Inactive दाखवत आहे.?</div>
+<div class="anudan-question" onclick="selectQ(12,this)">आधार कार्ड व ७/१२ वरील नावामध्ये तफावत आहे.?</div>
+<div class="anudan-question" onclick="selectQ(13,this)">अनुदान यादीमध्ये नाव नाही.?</div>
+
+</div>
+</div>
+
+<div id="anudanChatBox">
+<div class="anudan-chat-header">Anudan Sahay Chat</div>
+<div class="anudan-chat-body" id="chatBody">👈 प्रश्न निवडा</div>
+<div class="anudan-chat-footer">
+<input id="chatInput" readonly>
+<button onclick="sendAnswer()">Send</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<div id="anudanRight">
+<div class="anudan-profile">
+<img src="tree.jpg">
+<h3>अनुदान माहिती केंद्र</h3>
+<p>शेतकऱ्यांसाठी मार्गदर्शन</p>
+</div>
+
+<div class="anudan-info-box">✔ अधिकृत माहिती</div>
+<div class="anudan-info-box">⏳ वेळ वाचवा</div>
+<div class="anudan-info-box">🔒 सुरक्षित सेवा</div>
+
+<div class="anudan-tip">
+💡 eKYC, AgriStack व बँक तपशील अद्ययावत ठेवा
+</div>
+</div>
+
+</div>
+
+<script>
+let answers={
+1:"शेतकरी बांधवांनो नमस्कार, आपले अनुदान KYC पेंडिंग असल्यास ते तात्काळ पूर्ण करून घ्यावे. KYC पूर्ण नसल्यामुळे अनुदानाची रक्कम जमा होत नाही. KYC करण्यासाठी प्रथम आपला VK नंबर मिळवून जवळच्या CSC किंवा आपले सेवा केंद्र येथे जाऊन आवश्यक कागदपत्रांसह KYC प्रक्रिया पूर्ण करावी.अनुदान रक्कम बँक खात्यामध्ये जमा करण्याची प्रक्रिया सुरु होईल.",
+2:"शेतकरी बांधवांनो नमस्कार,आपल्याकडे अनुदानाशी संबंधित VK नंबर उपलब्ध नसेल, तर घाबरण्याची आवश्यकता नाही. सर्वप्रथम आपण 👉 https://saroleneet06-beep.github.io/servicepoint.com/ या अधिकृत संकेतस्थळाला भेट द्यावी.तेथे आधार क्रमांकाचे शेवटचे ४ अंक प्रविष्ट केल्यास आपला VK नंबर त्वरित मिळू शकतो.तसेच, इच्छित असल्यास आपण संबंधित ग्राम महसूल अधिकारी किंवा कार्यालयाशी संपर्क साधून देखील आपला VK नंबर प्राप्त करून घेऊ शकता.",
+3:"शेतकरी बांधवांनो नमस्कार, जर तुमचा जमीन खाता प्रकार सामाईक असेल तर,सामाईक खातेदारांपैकी एका खातेदार यांच्या नावे अनुदान मिळवु शकता  त्यासाठी तुम्हाला खातेदार यांचे आधार कार्ड,बँक पासबुक संमत्ती पत्र आवश्यक असल्यास संबंधित ग्राम महसूल अधिकारी यांच्याकडे जमा करावे .",
+4:"शेतकरी बांधवांनो नमस्कार, अनेक वेळा एका शेतकरी बांधवांना अनेक ठिकाणी जमीन असू शकते उदा :: गाव,तालुका,जिल्हा अश्या वेळेस संबंधित खातेदार यांना बाधित क्षेत्र GR मर्यादेपेक्षा जास्त क्षेत्र साईट वर अपलोड होण्याची शक्यता असते,जर असे झाले तर खातेदार यांना अनुदान मिळणे साठी अडचण निर्माण होऊ शकते,त्यासाठी उपाय म्हणून फक्त GR मर्यादे मध्येच क्षेत्र अपलोड करावे.जर क्षेत्र मर्यादेपेक्षा जास्त अपलोड झाले असेल तर संबधित ग्राममहसूल कार्यालय,तहसिल कार्यालय येथे बाधित क्षेत्र GR मर्यादेमध्ये आणावे असा अर्ज करावा. ",
+5:"शेतकरी बांधवांनो नमस्कार, एकाच गावामध्ये खातेदार यांचे अनेक खाते/होल्डिंग तयार झाल्या असतील तर सर्वात प्रथम खातेदार यांनी ग्राममहसूल अधिकारी यांच्या कडे आवश्यक कागदपत्रे देऊन सर्व खाते एकत्रित करण्यासाठी अर्ज करावा.अनुदान जमा करते वेळेस सर्व खाते एकत्रित असणे खुप गरजेचे आहे एकत्रित नसल्यास अनुदान रक्कम Multiple name same against Aadhaar असा साईट error येऊन अनुदान रिजेक्ट होण्याची शक्यता असते.",
+6:"मित्रांनो सध्या अग्री स्टाक ही शासनाची खुप महत्वपुर्ण योजना आहे.शेतकरी बांधवांना सर्व शासकीय योजनांना जोडणारी योजना,सध्या अनुदान हे online प्रणाली द्वारे जमा होत असल्यामुळे Agri Stack नोंदणी असणे अनिवार्य आहे.Agri Stack नोंदणी नसेल तर तात्काळ जवळच्या CSC,आपले सेवा केंद्र वर जाऊन नोंदणी करून घ्यावी .",
+7:"आधार कार्ड बँकेशी लिंक नसेल तर अनुदान रक्कम जमा होण्यास अडचण निर्माण होऊ शकते,ज्या बँकेमध्ये खाते उघडले आहे त्या बँकमध्ये जाऊन तात्काळ आधार कार्ड व मोबाईल नंबर  हे बँकेशी लिंक करून घ्यावे.",
+8:"शेतकरी बांधवांनो नमस्कार,अनेक वेळा अनुदान मंजुर वेळेस काही खातेदार मयत म्हणुन अनुदान पासुन वंचित राहतात.त्यासाठी सर्वप्रथम अर्जदार यांनी वारसा फेरफार लावण्यासाठी संबधित ग्राम महसूल अधिकारी यांच्या कडे आवश्यक कागदपत्र नुसार अर्ज करावा.वारसा फेरफार नंतर एकूण वारस खातेदार पैकी एका खातेदार यांच्या नावे अनुदान रक्कम मिळण्यासाठी खातेदार यांचे आधार कार्ड,बँक पासबुक संबधित कार्यालय यांच्याकडे जमा करावे.",
+9:"अनुदान वेळेस अनेक वेळा खातेदार यांचा VK नंबर तयार होतो पण खातेदार मयत असतात,अश्या वेळेस खातेदार यांचे अर्जदार यांनी सर्वात प्रथम वारसा फेरफार लावण्यासाठी संबंधित ग्राम महसूल यांच्याकडे आवश्यक कागदपत्रे देऊन अर्ज करावा.नंतर csc,mahaonline लॉग इन वरून अनुदान आधार क्रमांक बदलणे बाबत तहसिल कार्यालय कडे तक्रार नोंदवावी.संबधित तहसिल कार्यालय कडून आधार नंबर बदलल्या नंतरच VK नंबर द्वारे KYC करून घ्यावी. महत्वाची टीप: खातेदार मयत असतील आणि त्यांचा आधार कार्ड अनुदान मध्ये अपलोड झाला होऊन VK नंबर तयार झाला असेल तर मयत खातेदार यांच्या नावे KYC करू नये.",
+10:"अनेक शेतकरी बांधवांना अनुदान Status Payment Successful दाखवुन सुद्धा अनुदान बँक खात्यामध्ये जमा झाले नाही असे निदर्शनास येऊ शकते.कारण खातेदार यांचे अनुदान रक्कम बँक खात्यामध्ये वर्ग करण्याची प्रक्रिया सुरु आहे.काही तासांमध्ये खातेदार यांचे अनुदान आधार लिंक बँक खात्यामध्ये जमा होण्याची शक्यता असते.",
+11:"शेतकरी बांधवांना अनुदान Status Aadhaar Inactive दाखवत असेल तर सर्वात प्रथम जवळच्या आधार केंद्र वरून आधार कार्ड अपडेट करून घ्यावे,तसेच आधार कार्ड लिंक बँक मध्ये जाऊन बँकेची KYC प्रक्रिया पुर्ण करून घ्यावी. अनुदान रक्कम बँक खात्यामध्ये जमा करण्याची प्रक्रिया सुरु होईल.",
+12:"अनेक शेतकरी बांधवांच्या आधार कार्ड व ७/१२ वरील नावामध्ये तफावत दिसुन येते,त्यामुळे अग्री स्टाक अप्रोवल अनुदान मिळण्यास अडचण येऊ शकते,शेतकरी बांधव यांनी आधार नुसार ७/१२ रेकॉर्ड  वरील नावात दुरुस्ती साठी ग्राममहसूल अधिकारी कार्यालय येथे आवश्यक कागदपत्र नुसार नावात आधार प्रमाणे दुरुस्ती बाबत अर्ज सादर करावा.",
+13:"जर अनुदान यादीमध्ये नाव नसेल तर,संबधित ग्राममहसूल अधिकारी/कार्यालय येथे तात्काळ संपर्क साधावा."
+};
+
+let current=0;
+
+function selectQ(id,el){
+  current=id;
+  chatInput.value=el.innerText;
+  chatBody.innerHTML="";
+}
+
+function sendAnswer(){
+  if(!current) return;
+  let t=answers[current],i=0;
+  chatBody.innerHTML="";
+  let x=setInterval(()=>{
+    chatBody.innerHTML+=t.charAt(i++);
+    if(i>=t.length) clearInterval(x);
+  },25);
+}
+</script>
+
+</body>
+</html>
