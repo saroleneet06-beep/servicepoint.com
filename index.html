@@ -632,7 +632,16 @@ function goToAgriLink() {
 
 </script>
 
-            <div class="seva-item">अनुदान विषयी </div>
+            <div class="seva-item" onclick="openAnudan()">
+  अनुदान विषयी समस्या व उपाय 
+</div>
+
+<script>
+function openAnudan() {
+  window.open("try.html", "_blank");
+}
+</script>
+
             <div class="seva-item">आपली चावडी </div>
             <div class="seva-item">इतर सेवा</div>
         </div>
@@ -1455,8 +1464,10 @@ document.getElementById("openArj").addEventListener("click", function(){
 <style>
 #newSticker {
     display: inline-block;
-    margin-left: 30px;
-    padding: 3px 5px;
+    margin-left: 30px;   /* पहले जैसा */
+    position: relative;  /* 🔴 यही key है */
+    top: 170px;           /* 🔴 जितना नीचे चाहिए उतना */
+    padding: 3px 6px;
     background: linear-gradient(45deg, #ff004c, #ff7b00);
     color: #fff;
     font-size: 12px;
@@ -1464,6 +1475,7 @@ document.getElementById("openArj").addEventListener("click", function(){
     border-radius: 12px;
     animation: blink 0.5s infinite alternate;
 }
+
 @keyframes blink {
     from { opacity: 1; }
     to   { opacity: 0.3; }
