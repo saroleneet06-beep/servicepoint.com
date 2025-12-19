@@ -920,6 +920,87 @@ function joinWP(){
     );
 }
 </script>
+<!-- ===== VIDEO THUMBNAIL FLOATING BOX ===== -->
+<div id="ytBox">
+  <a href="https://www.youtube.com/watch?v=0b54YGP31mk" target="_blank">
+    <div class="yt-thumb">
+      <img
+        src="anudan.jpg"
+        alt="अनुदान माहिती व्हिडिओ"
+        onerror="this.onerror=null;this.src='https://img.youtube.com/vi/0b54YGP31mk/hqdefault.jpg';"
+      >
+      <div class="play-btn"></div>
+    </div>
+  </a>
+</div>
+
+<style>
+/* ===== POSITION CONTROL ===== */
+#ytBox{
+  position: fixed;
+  top: 200px;      /* 👈 yaha se upar-niche */
+  right: 10px;     /* 👈 yaha se left-right */
+  z-index: 99999999; /* VERY IMPORTANT */
+}
+
+/* ===== THUMBNAIL BOX ===== */
+.yt-thumb{
+  width: 260px;
+  background: #000;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.yt-thumb:hover{
+  transform: scale(1.05);
+}
+
+.yt-thumb img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== PLAY BUTTON ===== */
+.play-btn{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 68px;
+  background: rgba(255,0,0,0.95);
+  border-radius: 50%;
+}
+
+.play-btn::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  border-left: 20px solid #fff;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+}
+
+/* ===== MOBILE FIX ===== */
+@media (max-width: 768px){
+  #ytBox{
+    top: auto;
+    bottom: 120px;
+    right: 10px;
+  }
+  .yt-thumb{
+    width: 200px;
+  }
+}
+</style>
+
 <!-- ===== END ===== -->
 
         <!-- 1 -->
@@ -1113,128 +1194,7 @@ function closeDetails() {
     document.getElementById("profileDetails").style.display = "none";
 }
 </script>
-<!-- ================= RIGHT SIDE SLIDER WITH ZOOM SLIDESHOW ================= -->
 
-<style>
-/* --- RIGHT SIDE FIXED BOX --- */
-.right-slider-box {
-    position: fixed;
-    top: 200px;
-    right: 20px;
-    width: 220px;
-    height: 270px;
-    overflow: hidden;
-    border-radius: 15px;
-    background: #000;
-    box-shadow: 0 0 20px rgba(0,0,0,0.4);
-}
-
-/* --- IMAGES (RIGHT SIDE) --- */
-.slider-img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    animation: fadeSlider 20s infinite;
-    cursor: pointer;
-}
-
-.slider-img:nth-child(1){ animation-delay:0s; }
-.slider-img:nth-child(2){ animation-delay:4s; }
-.slider-img:nth-child(3){ animation-delay:8s; }
-.slider-img:nth-child(4){ animation-delay:12s; }
-.slider-img:nth-child(5){ animation-delay:16s; }
-
-/* FADE EFFECT */
-@keyframes fadeSlider {
-    0% {opacity:0;}
-    10% {opacity:1;}
-    30% {opacity:1;}
-    40% {opacity:0;}
-    100% {opacity:0;}
-}
-
-/* -------- FULLSCREEN POPUP -------- */
-#zoomPopup {
-    display: none;
-    position: fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background: rgba(0,0,0,0.90);
-    justify-content:center;
-    align-items:center;
-    z-index:9999999;
-}
-
-/* POPUP IMAGE */
-#zoomImg {
-    width: 85%;
-    max-width: 700px;
-    border-radius: 15px;
-    box-shadow: 0 0 40px #000;
-    transition: opacity 0.5s ease-in-out;
-    opacity: 0;
-}
-</style>
-
-<!-- ===== RIGHT SIDE SLIDER ===== -->
-<div class="right-slider-box">
-    <img src="epik1.png" class="slider-img" onclick="openZoom(0)">
-    <img src="agri1.jpg" class="slider-img" onclick="openZoom(1)">
-    <img src="epik.jpg" class="slider-img" onclick="openZoom(2)">
-    <img src="epik1.png" class="slider-img" onclick="openZoom(3)">
-    <img src="agri.jpg" class="slider-img" onclick="openZoom(4)">
-</div>
-
-<!-- ===== FULLSCREEN ZOOM POPUP ===== -->
-<div id="zoomPopup" onclick="closeZoom()">
-    <img id="zoomImg">
-</div>
-
-<script>
-/* SAME ORDER of IMAGES for SLIDER + POPUP */
-let popupImages = [
-    "epik1.png",
-    "agri1.jpg",
-    "epik.jpg",
-    "epik1.png",
-    "agri.jpg"
-];
-
-let popupIndex = 0;
-let popupInterval;
-
-/* --- OPEN POPUP --- */
-function openZoom(startIndex) {
-    popupIndex = startIndex;
-    showPopupImage();
-
-    document.getElementById("zoomPopup").style.display = "flex";
-
-    popupInterval = setInterval(() => {
-        popupIndex = (popupIndex + 1) % popupImages.length;
-        showPopupImage();
-    }, 4000);
-}
-
-function showPopupImage() {
-    let zoomImg = document.getElementById("zoomImg");
-    zoomImg.style.opacity = 0;
-
-    setTimeout(() => {
-        zoomImg.src = popupImages[popupIndex];
-        zoomImg.style.opacity = 1;
-    }, 200);
-}
-
-function closeZoom() {
-    document.getElementById("zoomPopup").style.display = "none";
-    clearInterval(popupInterval);
-}
-</script>
 <!-- =================== ALL FORMS SUBMENU (10 OPTIONS) =================== -->
 
 <style>
