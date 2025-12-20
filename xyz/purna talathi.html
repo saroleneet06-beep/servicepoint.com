@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+
+<style>
+/* ===== सेवार्थ आयडी column hide ===== */
+#abc th:nth-child(2),
+#abc td:nth-child(2){
+    display:none;
+}
+
+/* ===== Color Options (yahi se color badlo) ===== */
+:root{
+    --box-bg:#f4f7fb;
+    --top-bg:#ffffff;
+    --title-bg:#e0ecff;
+    --header-bg:#191970;
+    --header-text:#ffffff;
+    --row-even:#e8e8e8;
+    --row-odd:#ffffff;
+    --border:#c5c5c5;
+}
+
+/* ===== Table Base ===== */
+#abc{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--box-bg);
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+#abc td,#abc th{
+    border:1px solid var(--border);
+    padding:8px;
+    text-align:center;
+}
+
+/* ===== Top Row ===== */
+#abc thead tr:nth-child(1) td{
+    background:var(--top-bg);
+    font-size:20px;
+    font-weight:bold;
+    color:#191970;
+}
+
+/* ===== Title ===== */
+#abc thead tr:nth-child(2) td{
+    background:var(--title-bg);
+    font-size:20px;
+    font-weight:bold;
+    color:#191970;
+}
+
+/* ===== Header Row ===== */
+#abc thead tr:nth-child(3) td{
+    background:var(--header-bg);
+    color:var(--header-text);
+    font-weight:bold;
+}
+
+/* ===== Body Rows ===== */
+#abc tbody tr:nth-child(even){
+    background:var(--row-even);
+}
+#abc tbody tr:nth-child(odd){
+    background:var(--row-odd);
+}
+</style>
+</head>
+
+<body>
+
+<table id="abc">
+<thead>
+<tr>
+<td>जिल्हा: परभणी</td>
+<td></td>
+<td>तालुका: पुर्णा</td>
+<td style="text-align:right;">दिनांक : 19/12/2025</td>
+</tr>
+
+<tr>
+<td colspan="4">तालुका पुर्णा - कार्यरत तलाठी आणि मंडळ अधिकारी यांची माहिती</td>
+</tr>
+
+<tr>
+<td>अ.क्र.</td>
+<td>सेवार्थ आयडी</td>
+<td>तलाठ्याचे नाव</td>
+<td>मोबाईल नं.</td>
+</tr>
+</thead>
+
+<tbody>
+<tr><td>1</td><td>HCDDRGM7202</td><td>दिलीप राहूल गोडबोले</td><td>919421479147</td></tr>
+<tr><td>2</td><td>REVAASF7802</td><td>आयशा हुमेरा शेख</td><td>9527569601</td></tr>
+<tr><td>3</td><td>REVADKM8501</td><td>अजय देवराव कटके</td><td>919970619863</td></tr>
+<tr><td>4</td><td>REVARRM8901</td><td>अंकुश रामराव राठोड</td><td>917709893551</td></tr>
+<tr><td>5</td><td>REVARTM8201</td><td>अशोक रावसाहेब तोंडे</td><td>917696239848</td></tr>
+<tr><td>6</td><td>REVASJF9201</td><td>Anushka Suresh Jampangire</td><td>918766675880</td></tr>
+<tr><td>7</td><td>REVDPCM8701</td><td>ज्ञानेश्वर पांडुरंग चरपीलवार</td><td>917020439768</td></tr>
+<tr><td>8</td><td>REVDSBF8101</td><td>धरती श्रीपती भराडे</td><td>919689634247</td></tr>
+<tr><td>9</td><td>REVFSPM8901</td><td>फैजुलखान शेरखान पठाण</td><td>918999614198</td></tr>
+<tr><td>10</td><td>REVJCKF8401</td><td>ज्‍योती चंद्रकांत कुरवारे</td><td>919657812530</td></tr>
+<tr><td>11</td><td>REVKGGM7101</td><td>केशव गणपतराव गलांडे</td><td>919764671349</td></tr>
+<tr><td>12</td><td>REVKNDM9101</td><td>कल्याण नारायण धोंगडे</td><td>918788258918</td></tr>
+<tr><td>13</td><td>REVLRSM9101</td><td>लक्ष्मण रामदत्त शिरशेटवाड</td><td>919766221641</td></tr>
+<tr><td>14</td><td>REVMMKF8602</td><td>मेहराज महेमुद खान पठाण</td><td>918975514718</td></tr>
+<tr><td>15</td><td>REVMRDM7302</td><td>मिलिंद रमेश दवणे</td><td>919284283695</td></tr>
+<tr><td>16</td><td>REVMYCF8401</td><td>कु मोहिनी येल्लया चिटटमपेल्ली</td><td>919763030724</td></tr>
+<tr><td>17</td><td>REVPBKM8901</td><td>प्रवीन बालासाहेब कुलकर्णी</td><td>919975407553</td></tr>
+<tr><td>18</td><td>REVPDDF9502</td><td>पुजा दिलीप धरणकर</td><td>919922947427</td></tr>
+<tr><td>19</td><td>REVRDBM6805</td><td>रमेश दत्तराव भराड</td><td>919130109747</td></tr>
+<tr><td>20</td><td>REVRDKM881</td><td>रामेश्वर ज्ञानोबा केंद्रे</td><td>919604048048</td></tr>
+<tr><td>21</td><td>REVRHAM7701</td><td>राजेश्‍वर हनमन्‍लु अंदेलवार</td><td>919689790393</td></tr>
+<tr><td>22</td><td>REVRMBM7801</td><td>राजेंद्र माणीकराव बाहेकर</td><td>917219139477</td></tr>
+<tr><td>23</td><td>REVRRSM8602</td><td>राजकुमार राजाराम सिंगरवाड</td><td>917887915244</td></tr>
+<tr><td>24</td><td>REVRSCM9002</td><td>ऋषिकेश संदिपान चांदवडे</td><td>919958541967</td></tr>
+<tr><td>25</td><td>REVRSGF9901</td><td>रोहिणी सोमेश्वर गिराम</td><td>918788860699</td></tr>
+<tr><td>26</td><td>REVSGMM9401</td><td>सचिन गणेशराव मारडे</td><td>9767747645</td></tr>
+<tr><td>27</td><td>REVSMRM6901</td><td>सुभाष मारोती राउत</td><td>919764500071</td></tr>
+<tr><td>28</td><td>REVSSKM8805</td><td>shudhodan sahebrao khillare</td><td>9922819232</td></tr>
+<tr><td>29</td><td>REVSSSF8702</td><td>शिल्‍पा सुर्यकांत सरपे</td><td>918379016046</td></tr>
+<tr><td>30</td><td>REVSSTM7502</td><td>सुनिल सूर्यभानराव ताकतोडे</td><td>919860542880</td></tr>
+<tr><td>31</td><td>REVSTRM7301</td><td>सुधाकर तुकाराम राठोड</td><td>919764029240</td></tr>
+<tr><td>32</td><td>REVSVGF9801</td><td>स्नेहा विजय गायकवाड</td><td>919359027963</td></tr>
+<tr><td>33</td><td>REVSVKM9401</td><td>सोमेश विश्वनाथ कल्याणकर</td><td>918975101827</td></tr>
+<tr><td>34</td><td>RVERSBM7502</td><td>रमेश श्रीरंगराव बनसोडे</td><td>918552070252</td></tr>
+</tbody>
+</table>
+
+<!-- ===== Name A → Z Sorting ===== -->
+<script>
+(function(){
+  const tbody=document.querySelector("#abc tbody");
+  const rows=[...tbody.rows];
+  rows.sort((a,b)=>a.cells[2].innerText.localeCompare(b.cells[2].innerText,'mr'));
+  rows.forEach(r=>tbody.appendChild(r));
+})();
+</script>
+
+</body>
+</html>

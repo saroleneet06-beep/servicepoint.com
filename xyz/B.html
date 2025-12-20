@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<title>District Taluka Information</title>
+
+<style>
+:root{
+    --primary:#0f2a44;      /* Dark Govt Blue */
+    --secondary:#1e40af;    /* Highlight Blue */
+    --bg:#f3f6fb;
+    --card:#ffffff;
+    --border:#d1d5db;
+    --text:#1f2937;
+}
+
+body{
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background:var(--bg);
+    margin:0;
+    padding:30px 15px;
+    color:var(--text);
+}
+
+.container{
+    max-width:950px;
+    margin:auto;
+    background:var(--card);
+    border-radius:10px;
+    border:1px solid var(--border);
+}
+
+/* Header Bar */
+.header{
+    background:linear-gradient(90deg,var(--primary),var(--secondary));
+    color:#fff;
+    padding:18px 20px;
+    border-radius:10px 10px 0 0;
+}
+
+.header h2{
+    margin:0;
+    font-size:22px;
+    font-weight:600;
+}
+
+/* Body */
+.content{
+    padding:25px;
+}
+
+/* Labels */
+.label{
+    font-size:14px;
+    font-weight:600;
+    margin-bottom:6px;
+    color:#374151;
+}
+
+/* Select */
+select{
+    width:100%;
+    padding:12px;
+    margin-bottom:18px;
+    font-size:15px;
+    border:1px solid var(--border);
+    border-radius:6px;
+    background:#ffffff;
+}
+
+select:focus{
+    outline:none;
+    border-color:var(--secondary);
+}
+
+/* Content Box */
+#contentBox{
+    margin-top:15px;
+    border:1px solid var(--border);
+    height:540px;
+    background:#f9fafb;
+}
+
+iframe{
+    width:100%;
+    height:100%;
+    border:none;
+}
+
+/* Footer Note */
+.note{
+    margin-top:15px;
+    font-size:13px;
+    color:#6b7280;
+    text-align:right;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h2>कार्यरत तलाठी आणि मंडळ अधिकारी यांची माहिती 
+</h2>
+    </div>
+
+    <div class="content">
+
+        <div class="label">जिल्हा निवडा</div>
+        <select id="district" onchange="loadTaluka()">
+            <option value="">— जिल्हा निवडा —</option>
+            <option value="parbhani">परभणी</option>
+            <option value="nanded">नांदेड</option>
+            <option value="latur">लातूर</option>
+            <option value="beed">बीड</option>
+            <option value="jalna">जालना</option>
+            <option value="hingoli">हिंगोली</option>
+            <option value="osmanabad">उस्मानाबाद</option>
+            <option value="aurangabad">औरंगाबाद</option>
+            <option value="pune">पुणे</option>
+            <option value="nagpur">नागपूर</option>
+        </select>
+
+        <div class="label">तालुका निवडा</div>
+        <select id="taluka" onchange="loadHTML()" style="display:none;">
+            <option value="">— तालुका निवडा —</option>
+        </select>
+
+        <div id="contentBox" style="display:none;">
+            <iframe id="dataFrame"></iframe>
+        </div>
+
+        <div class="note">
+            * माहिती सार्वजनिक स्त्रोतांवर आधारित आहे
+        </div>
+
+    </div>
+</div>
+
+<script>
+const talukaData = {
+    parbhani: [
+        {name:"पालम", file:"palam talathi.html"},
+        {name:"पुर्णा", file:"purna talathi.html"},
+        {name:"गंगाखेड", file:"gangakhed talathi.html"},
+        {name:"परभणी", file:"parbhani talathi.html"},
+        {name:"सेलू", file:"selu talathi.html"},
+        {name:"जिंतूर", file:"jintur talathi.html"},
+        {name:"पाथरी", file:"pathari talathi.html"},
+        {name:"मानवत", file:"manwat talathi.html"},
+        {name:"सोनपेठ", file:"sonpeth talathi.html"},
+        {name:"ईतर ", file:"parbhani_palam2.html"}
+    ],
+    nanded: [
+        {name:"नांदेड", file:"nanded_city.html"},
+        {name:"अर्धापूर", file:"nanded_ardhapur.html"},
+        {name:"भोकर", file:"nanded_bhokar.html"},
+        {name:"देगलूर", file:"nanded_deglur.html"},
+        {name:"हदगाव", file:"nanded_hadgaon.html"},
+        {name:"किनवट", file:"nanded_kinwat.html"},
+        {name:"मुखेड", file:"nanded_mukhed.html"},
+        {name:"लोहा", file:"nanded_loha.html"},
+        {name:"नायगाव", file:"nanded_naigaon.html"},
+        {name:"उमरी", file:"nanded_umri.html"}
+    ]
+};
+
+function loadTaluka(){
+    const district = document.getElementById("district").value;
+    const talukaSelect = document.getElementById("taluka");
+
+    talukaSelect.innerHTML = '<option value="">— तालुका निवडा —</option>';
+    document.getElementById("contentBox").style.display="none";
+
+    if(!district){
+        talukaSelect.style.display="none";
+        return;
+    }
+
+    talukaData[district].forEach(t=>{
+        const opt = document.createElement("option");
+        opt.value = t.file;
+        opt.textContent = t.name;
+        talukaSelect.appendChild(opt);
+    });
+
+    talukaSelect.style.display="block";
+}
+
+function loadHTML(){
+    const file = document.getElementById("taluka").value;
+    if(!file) return;
+
+    document.getElementById("contentBox").style.display="block";
+    document.getElementById("dataFrame").src = file;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+
+<style>
+/* ===== सेवार्थ आयडी column hide ===== */
+#abc th:nth-child(2),
+#abc td:nth-child(2){
+    display:none;
+}
+
+/* ===== Color Options (yahi se color badlo) ===== */
+:root{
+    --box-bg:#f4f7fb;
+    --header-bg:#1f3a5f;
+    --header-text:#ffffff;
+    --row-even:#e8f0fe;
+    --row-odd:#ffffff;
+    --border:#9aa5b1;
+}
+
+/* ===== Table Base ===== */
+#abc{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--box-bg);
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+#abc td,#abc th{
+    border:1px solid var(--border);
+    padding:8px;
+    text-align:center;
+}
+
+/* ===== Top Info ===== */
+#abc thead tr:nth-child(1) td{
+    background:#dbeafe;
+    font-size:18px;
+    font-weight:bold;
+}
+
+/* ===== Title ===== */
+#abc thead tr:nth-child(2) td{
+    background:#bfdbfe;
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* ===== Header Row ===== */
+#abc thead tr:nth-child(3) td{
+    background:var(--header-bg);
+    color:var(--header-text);
+    font-weight:bold;
+}
+
+/* ===== Rows ===== */
+#abc tbody tr:nth-child(even){
+    background:var(--row-even);
+}
+#abc tbody tr:nth-child(odd){
+    background:var(--row-odd);
+}
+</style>
+</head>
+
+<body>
+
+<table id="abc">
+<thead>
+<tr>
+<td colspan="4">जिल्हा : परभणी &nbsp; | &nbsp; तालुका : पालम &nbsp; | &nbsp; दिनांक : 19/12/2025</td>
+</tr>
+
+<tr>
+<td colspan="4">तालुका पालम - कार्यरत तलाठी आणि मंडळ अधिकारी यांची माहिती</td>
+</tr>
+
+<tr>
+<td>अ.क्र.</td>
+<td>सेवार्थ आयडी</td>
+<td>तलाठ्याचे नाव</td>
+<td>मोबाईल नं.</td>
+</tr>
+</thead>
+
+<tbody>
+<tr><td>1</td><td>MEMPRNM9001</td><td>प्रवीण रमेश निखाते</td><td>9028111684</td></tr>
+<tr><td>2</td><td>REVAGWM9401</td><td>अक्षय गणपतराव वाघमारे</td><td>8805622746</td></tr>
+<tr><td>3</td><td>REVALDM8001</td><td>अरविंद लक्ष्‍मण डांगे</td><td>919309072401</td></tr>
+<tr><td>4</td><td>REVANDF9601</td><td>अनुराधा नारायणराव दातार</td><td>8380920654</td></tr>
+<tr><td>5</td><td>REVANGM7301</td><td>आंनदा नारायन गायकवाड</td><td>9028327303</td></tr>
+<tr><td>6</td><td>REVASSM0001</td><td>आदित्य सुरेश सुडे</td><td>9049318693</td></tr>
+<tr><td>7</td><td>REVAVMF9301</td><td>आश्विनी विश्वनाथ मोगले</td><td>917249659038</td></tr>
+<tr><td>8</td><td>REVBVBF8301</td><td>बेबी विठ्ठलराव बोईनवाड</td><td>919011636059</td></tr>
+<tr><td>9</td><td>REVJDMM8001</td><td>जगन्‍नाथ दगडोबा मुंढे</td><td>8668918284</td></tr>
+<tr><td>10</td><td>REVMHDM9901</td><td>महेश हरिभाऊ डाखोरे</td><td>919049566972</td></tr>
+<tr><td>11</td><td>REVMRGM7201</td><td>मनिष रामराव गुंगे</td><td>919860046840</td></tr>
+<tr><td>12</td><td>REVMVJM8103</td><td>मारोती व्‍यंकटराव जालने</td><td>918275284036</td></tr>
+<tr><td>13</td><td>REVNSPM9001</td><td>नवनाथ श्रीमंत फड</td><td>919403433633</td></tr>
+<tr><td>14</td><td>REVPTDM9501</td><td>प्रशांत त्र्यंबकराव ढोणे</td><td>919890109325</td></tr>
+<tr><td>15</td><td>REVRPDF9202</td><td>राजश्री प्रभाकरराव देसाई</td><td>919049940712</td></tr>
+<tr><td>16</td><td>REVRPWM7001</td><td>वाघमारे राजेन्‍द्र पाडुरंग</td><td>919860491029</td></tr>
+<tr><td>17</td><td>REVSBAF8601</td><td>शुभांगी बाबाराव आळे</td><td>917248922726</td></tr>
+<tr><td>18</td><td>REVSKNM9101</td><td>सर्जेराव किसन नरवटे</td><td>919834240760</td></tr>
+<tr><td>19</td><td>REVSMJM8301</td><td>स्वप्निल मधुकरराव जामनेकर</td><td>917350862431</td></tr>
+<tr><td>20</td><td>REVSSCF9001</td><td>सुनिता शिवाजी चेटले</td><td>917387010726</td></tr>
+<tr><td>21</td><td>REVSVCM9501</td><td>सुदीप वसंतराव चोरघडे</td><td>917057263320</td></tr>
+<tr><td>22</td><td>REVVGDM8401</td><td>वीनोद गुंडेराव देगांवकर</td><td>7499681291</td></tr>
+<tr><td>23</td><td>REVVMMM8701</td><td>विष्णु माणिकराव मुळे</td><td>7385555222</td></tr>
+</tbody>
+</table>
+
+<!-- ===== Name A → Z Sorting Script ===== -->
+<script>
+(function(){
+    const tbody = document.querySelector("#abc tbody");
+    const rows = Array.from(tbody.querySelectorAll("tr"));
+
+    rows.sort((a,b)=>{
+        const nameA = a.children[2].innerText.trim();
+        const nameB = b.children[2].innerText.trim();
+        return nameA.localeCompare(nameB,'mr');
+    });
+
+    rows.forEach(r => tbody.appendChild(r));
+})();
+</script>
+
+</body>
+</html>
