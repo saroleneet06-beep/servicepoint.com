@@ -1456,6 +1456,46 @@ document.addEventListener("DOMContentLoaded", function () {
     target.appendChild(tag);
 });
 </script>
+<script>
+(function () {
+
+    const sub = document.getElementById("subdistrictSelect");
+    if (!sub) return;
+
+    const today = new Date().toISOString().split("T")[0];
+    const key = "yt_video_watched_date";
+
+    sub.addEventListener("change", function (e) {
+
+        // ❌ agar user ne aaj video nahi dekha
+        if (localStorage.getItem(key) !== today) {
+
+            // ⛔ sabhi existing change events rok do
+            e.stopImmediatePropagation();
+            e.preventDefault();
+
+            // ▶ YouTube new tab open
+            window.open(
+                "https://www.youtube.com/watch?v=0b54YGP31mk",
+                "_blank"
+            );
+
+            // ✅ video open hua = aaj ke liye allowed
+            localStorage.setItem(key, today);
+
+            // dropdown ko wapas reset
+            this.value = "";
+
+            return false;
+        }
+
+        // ✅ agar aaj video dekh chuka hai
+        // → kuch mat karo, original code apne aap chalega
+
+    }, true); // 🔴 capture phase (sabse pehle chale)
+
+})();
+</script>
 
 </body>
 </html>
