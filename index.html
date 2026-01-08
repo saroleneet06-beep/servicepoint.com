@@ -161,10 +161,10 @@ let jsonData = [];
 
 Promise.all([
     fetch("palam2024.json").then(r => r.json()),
-    fetch("palam1.json").then(r => r.json()),
-    fetch("palam.json").then(r => r.json()),
-    fetch("purna.json").then(r => r.json()),
+     fetch("purna.json").then(r => r.json()),
     fetch("purna1.json").then(r => r.json()),
+    fetch("palam2025_JSsafe_part1.json").then(r => r.json()),
+    fetch("palam2025_JSsafe_part2.json").then(r => r.json()),
     fetch("ganga.json").then(r => r.json())
 ])
 .then(all => {
